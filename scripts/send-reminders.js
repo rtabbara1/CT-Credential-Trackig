@@ -1,4 +1,22 @@
-const transport = nodemailer.createTransport({
-    service: "gmail",
-    auth: { user: OUTLOOK_USER, pass: OUTLOOK_PASSWORD },
-  });
+import nodemailer from "nodemailer";
+
+const GMAIL_USER     = process.env.OUTLOOK_USER;
+const GMAIL_PASSWORD = process.env.OUTLOOK_PASSWORD;
+
+const SUPERVISOR_EMAIL = "Raghda_Tabbara@atriushealth.org";
+const MANAGER_EMAIL    = "Cheryl_Whyte@atriushealth.org";
+
+const TECHS = [
+  { firstName: "Karen",     lastName: "Calabro",     email: "Karen_Calabro@atriushealth.org",      arrt: "2026-07-31", stateLicense: "2027-08-31", bls: "2027-03-01" },
+  { firstName: "Christina", lastName: "Desmond",     email: "Christina_Desmond@atriushealth.org",   arrt: "2026-07-31", stateLicense: "2027-08-31", bls: "2026-10-01" },
+  { firstName: "Adam",      lastName: "Dykas",       email: "Adam_Dykas@atriushealth.org",          arrt: "2027-07-31", stateLicense: "2027-08-31", bls: "2027-05-01" },
+  { firstName: "Anthony",   lastName: "Gattonini",   email: "Anthony_Gattonini@atriushealth.org",   arrt: "2026-08-31", stateLicense: "2027-09-30", bls: "2026-10-01" },
+  { firstName: "Ibrahim",   lastName: "Haboub",      email: "Ibrahim_Haboub@atriushealth.org",      arrt: "2027-08-31", stateLicense: "2027-09-30", bls: "2027-06-01" },
+  { firstName: "Stacey",    lastName: "Hurley",      email: "Stacey_Hurley@atriushealth.org",       arrt: "2027-05-31", stateLicense: "2027-06-30", bls: "2027-05-01" },
+  { firstName: "Stacie",    lastName: "Joyce",       email: "Stacie_Joyce@atriushealth.org",        arrt: "2026-05-31", stateLicense: "2027-06-30", bls: "2028-02-01" },
+  { firstName: "Mary",      lastName: "Mello",       email: "Mary_Mello@atriushealth.org",          arrt: "2026-07-31", stateLicense: "2027-08-31", bls: "2027-03-01" },
+  { firstName: "Dona",      lastName: "Menutole",    email: "Dona_Menutole@atriushealth.org",       arrt: "2027-01-31", stateLicense: "2027-02-28", bls: "2028-03-01" },
+  { firstName: "Kelley",    lastName: "Secord",      email: "Kelly_Secord@atriushealth.org",        arrt: "2027-10-31", stateLicense: "2027-11-30", bls: "2026-10-01" },
+  { firstName: "Christine", lastName: "Sorrento",    email: "Christine_Sorrento@atriushealth.org",  arrt: "2026-10-31", stateLicense: "2027-11-30", bls: "2027-10-01" },
+  { firstName: "Nancy",     lastName: "Spaulding",   email: "Nancy_Spaulding@atriushealth.org",     arrt: "2026-09-30", stateLicense: "2027-10-31", bls: "2027-03-01" },
+  { firstName: "Kevin",     lastName: "Suslavicius", email: "Kevin_Suslavicius@atriushealth.org",   arrt: "2027-07-31", stat
