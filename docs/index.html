@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CT Credentials Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #f5f3ee;
+  --surface: #ffffff;
+  --surface2: #f0ede6;
+  --border: #e0dbd0;
+  --accent: #1a1a2e;
+  --red: #c0392b;
+  --orange: #d35400;
+  --yellow: #f39c12;
+  --green: #27ae60;
+  --text: #1a1a1a;
+  --muted: #7a7570;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'IBM Plex Sans', sans-serif;
+  --display: 'Syne', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: var(--sans); min-height: 100vh; }
+#login-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--accent); }
+.login-wrap { width: 380px; padding: 48px 40px; background: var(--bg); border-radius: 4px; box-shadow: 8px 8px 0 #0a0a1a; }
+.login-wrap .logo { font-family: var(--display); font-size: 1.1rem; font-weight: 800; margin-bottom: 6px; }
+.login-wrap .sub { font-size: .8rem; color: var(--muted); margin-bottom: 32px; font-family: var(--mono); }
+.login-wrap label { display: block; font-size: .7rem; font-weight: 500; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 6px; }
+.login-wrap input { width: 100%; border: 2px solid var(--border); border-radius: 2px; padding: 11px 14px; font-family: var(--mono); font-size: .9rem; background: var(--bg); color: var(--text); outline: none; transition: border-color .15s; }
+.login-wrap input:focus { border-color: var(--accent); }
+.login-wrap .btn-login { margin-top: 16px; width: 100%; background: var(--accent); color: var(--bg); border: none; border-radius: 2px; padding: 13px; font-family: var(--display); font-size: .95rem; font-weight: 700; cursor: pointer; transition: background .15s; }
+.login-wrap .btn-login:hover { background: #2d2d4e; }
+.login-err { color: var(--red); font-size: .78rem; margin-top: 8px; display: none; font-family: var(--mono); }
+#app { display: none; min-height: 100vh; }
+header { background: var(--accent); color: var(--bg); padding: 0 40px; height: 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 10; }
+.brand { font-family: var(--display); font-size: 1rem; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+.brand-tag { font-family: var(--mono); font-size: .65rem; background: #ffffff22; padding: 2px 8px; border-radius: 2px; }
+header nav { display: flex; gap: 2px; }
+header nav button { background: none; border: none; color: #ffffff88; font-family: var(--sans); font-size: .82rem; padding: 6px 14px; border-radius: 2px; cursor: pointer; transition: all .15s; }
+header nav button.active, header nav button:hover { background: #ffffff18; color: #fff; }
+.btn-signout { background: none; border: 1px solid #ffffff33; color: #ffffff88; font-family: var(--mono); font-size: .72rem; padding: 5px 12px; border-radius: 2px; cursor: pointer; }
+.btn-signout:hover { border-color: #ffffff66; color: #fff; }
+main { padding: 36px 40px; max-width: 1200px; margin: 0 auto; }
+.tab { display: none; } .tab.active { display: block; }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+.stat { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; border-left: 4px solid var(--border); }
+.stat.s-red { border-left-color: var(--red); } .stat.s-orange { border-left-color: var(--orange); } .stat.s-green { border-left-color: var(--green); } .stat.s-gray { border-left-color: var(--accent); }
+.stat .lbl { font-size: .68rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 500; margin-bottom: 10px; }
+.stat .num { font-family: var(--display); font-size: 2.4rem; font-weight: 800; line-height: 1; }
+.stat.s-red .num { color: var(--red); } .stat.s-orange .num { color: var(--orange); } .stat.s-green .num { color: var(--green); }
+.sec { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.sec h2 { font-family: var(--display); font-size: 1.1rem; font-weight: 700; }
+.sec p { font-size: .78rem; color: var(--muted); margin-top: 2px; }
+.btn { border-radius: 2px; padding: 8px 18px; font-family: var(--sans); font-size: .82rem; font-weight: 500; cursor: pointer; border: none; transition: all .15s; }
+.btn-dark { background: var(--accent); color: var(--bg); } .btn-dark:hover { background: #2d2d4e; }
+.btn-outline { background: none; border: 1px solid var(--border); color: var(--text); } .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+.btn-red { background: #c0392b18; color: var(--red); border: 1px solid #c0392b33; } .btn-red:hover { background: #c0392b28; }
+.btn-sm { padding: 4px 10px; font-size: .75rem; }
+.table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+table { width: 100%; border-collapse: collapse; font-size: .83rem; }
+thead th { padding: 10px 16px; text-align: left; font-size: .65rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); background: var(--surface2); border-bottom: 1px solid var(--border); }
+tbody tr { border-bottom: 1px solid var(--border); transition: background .1s; } tbody tr:last-child { border-bottom: none; } tbody tr:hover { background: var(--surface2); }
+tbody td { padding: 12px 16px; vertical-align: middle; }
+.tech-name { font-family: var(--display); font-weight: 600; font-size: .9rem; }
+.tech-email { font-family: var(--mono); font-size: .72rem; color: var(--muted); margin-top: 2px; }
+.badge { display: inline-block; font-size: .68rem; font-family: var(--mono); font-weight: 500; padding: 3px 8px; border-radius: 2px; white-space: nowrap; }
+.b-red { background: #c0392b18; color: var(--red); border: 1px solid #c0392b33; }
+.b-orange { background: #d3540018; color: var(--orange); border: 1px solid #d3540033; }
+.b-yellow { background: #f39c1218; color: #b7770d; border: 1px solid #f39c1233; }
+.b-green { background: #27ae6018; color: var(--green); border: 1px solid #27ae6033; }
+.b-gray { background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
+.alert-list { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+.alert-row { display: flex; align-items: center; gap: 16px; padding: 14px 20px; border-bottom: 1px solid var(--border); }
+.alert-row:last-child { border-bottom: none; }
+.alert-icon { width: 36px; height: 36px; border-radius: 2px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+.ai-red { background: #c0392b18; } .ai-orange { background: #d3540018; } .ai-yellow { background: #f39c1218; }
+.alert-info strong { font-size: .88rem; font-weight: 500; }
+.alert-info span { font-size: .75rem; color: var(--muted); font-family: var(--mono); display: block; margin-top: 1px; }
+.empty { padding: 40px; text-align: center; color: var(--muted); font-size: .88rem; }
+.overlay { display: none; position: fixed; inset: 0; background: #1a1a1a99; z-index: 100; align-items: center; justify-content: center; backdrop-filter: blur(3px); }
+.overlay.open { display: flex; }
+.modal { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 32px; width: 500px; max-height: 90vh; overflow-y: auto; box-shadow: 8px 8px 0 #1a1a1a33; animation: up .18s ease; }
+@keyframes up { from { transform: translateY(12px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.modal h3 { font-family: var(--display); font-size: 1.1rem; font-weight: 700; margin-bottom: 22px; }
+.fg { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.fi { display: flex; flex-direction: column; gap: 5px; } .fi.full { grid-column: 1/-1; }
+.fi label { font-size: .68rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.fi input { border: 1px solid var(--border); border-radius: 2px; padding: 9px 12px; font-family: var(--mono); font-size: .85rem; background: var(--bg); color: var(--text); outline: none; transition: border-color .15s; }
+.fi input:focus { border-color: var(--accent); }
+.modal-foot { display: flex; gap: 10px; justify-content: flex-end; margin-top: 22px; }
+.settings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.scard { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 24px; }
+.scard h3 { font-family: var(--display); font-weight: 700; font-size: .95rem; margin-bottom: 4px; }
+.scard p { font-size: .78rem; color: var(--muted); margin-bottom: 18px; }
+.scard label { display: block; font-size: .68rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 5px; }
+.scard input { width: 100%; border: 1px solid var(--border); border-radius: 2px; padding: 9px 12px; font-family: var(--mono); font-size: .85rem; background: var(--bg); color: var(--text); outline: none; margin-bottom: 14px; }
+.scard input:focus { border-color: var(--accent); }
+.save-row { display: flex; align-items: center; gap: 12px; margin-top: 4px; }
+.saved-msg { font-size: .78rem; color: var(--green); font-family: var(--mono); opacity: 0; transition: opacity .3s; }
+.saved-msg.show { opacity: 1; }
+.info-box { background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; padding: 16px; font-family: var(--mono); font-size: .75rem; color: var(--muted); line-height: 1.9; grid-column: 1/-1; }
+#toast { position: fixed; bottom: 24px; right: 24px; background: var(--accent); color: var(--bg); border-radius: 2px; padding: 11px 18px; font-size: .82rem; font-family: var(--mono); z-index: 999; transform: translateY(12px); opacity: 0; transition: all .22s; pointer-events: none; box-shadow: 4px 4px 0 #0a0a1a55; }
+#toast.show { transform: translateY(0); opacity: 1; } #toast.err { background: var(--red); }
+.token-banner { background: #fff3cd; border: 1px solid #ffc107; border-radius: 4px; padding: 14px 18px; margin-bottom: 24px; font-size: .82rem; display: none; align-items: center; gap: 10px; }
+</style>
+</head>
+<body>
+  <div id="login-screen">
+  <div class="login-wrap">
+    <div class="logo">CT Credential Tracker</div>
+    <div class="sub">Atrius Health · CT Imaging Department</div>
+    <label for="pw">Admin Password</label>
+    <input type="password" id="pw" placeholder="Enter password" />
+    <div class="login-err" id="login-err">Incorrect password.</div>
+    <button class="btn-login" onclick="doLogin()">Sign In →</button>
+  </div>
+</div>
+
+<div id="app">
+  <header>
+    <div class="brand">CT Credentials <span class="brand-tag">ADMIN</span></div>
+    <nav>
+      <button class="active" onclick="showTab('dashboard',this)">Dashboard</button>
+      <button onclick="showTab('techs',this)">Techs</button>
+      <button onclick="showTab('settings',this)">Settings</button>
+    </nav>
+    <button class="btn-signout" onclick="logout()">Sign out</button>
+  </header>
+  <main>
+    <div class="tab active" id="tab-dashboard">
+      <div class="stats">
+        <div class="stat s-red"><div class="lbl">Expired</div><div class="num" id="s-expired">—</div></div>
+        <div class="stat s-orange"><div class="lbl">Expiring ≤ 30 days</div><div class="num" id="s-soon">—</div></div>
+        <div class="stat s-green"><div class="lbl">Compliant</div><div class="num" id="s-ok">—</div></div>
+        <div class="stat s-gray"><div class="lbl">Total Techs</div><div class="num" id="s-total">—</div></div>
+      </div>
+      <div class="sec"><div><h2>Active Alerts</h2><p>Credentials needing attention today</p></div><button class="btn btn-outline" onclick="render()">↻ Refresh</button></div>
+      <div class="alert-list" id="alert-list"><div class="empty">Loading…</div></div>
+    </div>
+    <div class="tab" id="tab-techs">
+      <div class="sec">
+        <div><h2>Tech Roster</h2><p>Manage credential expiration dates</p></div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-outline" onclick="syncToGitHub()">⬆ Save to GitHub</button>
+          <button class="btn btn-dark" onclick="openAdd()">+ Add Tech</button>
+        </div>
+      </div>
+      <div id="github-banner" class="token-banner">⚠️ Add your GitHub token in <strong>Settings</strong> to save changes.</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Name</th><th>Email</th><th>ARRT</th><th>State License</th><th>BLS</th><th></th></tr></thead>
+          <tbody id="tech-tbody"><tr><td colspan="6" class="empty">Loading…</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="tab" id="tab-settings">
+      <div class="sec"><div><h2>Settings</h2></div></div>
+      <div class="settings-grid">
+        <div class="scard">
+          <h3>GitHub Integration</h3>
+          <p>Required to save changes from this dashboard back to your repo.</p>
+          <label>GitHub Personal Access Token</label>
+          <input type="password" id="s-token" placeholder="ghp_xxxxxxxxxxxx" />
+          <label>Repository</label>
+          <input type="text" id="s-repo" placeholder="rtabbara1/CT-Credential-Trackig" />
+          <div class="save-row"><button class="btn btn-dark" onclick="saveGitHubSettings()">Save</button><span class="saved-msg" id="gh-saved">✓ Saved</span></div>
+        </div>
+        <div class="scard">
+          <h3>Notification Recipients</h3>
+          <p>CC'd on all reminders and receive daily expired alerts.</p>
+          <label>Supervisor Email</label>
+          <input type="email" id="s-super" value="Raghda_Tabbara@atriushealth.org" />
+          <label>Manager Email</label>
+          <input type="email" id="s-mgr" value="Cheryl_Whyte@atriushealth.org" />
+          <div class="save-row"><button class="btn btn-dark" onclick="saveRecipients()">Save</button><span class="saved-msg" id="rec-saved">✓ Saved</span></div>
+        </div>
+        <div class="info-box">
+          <strong style="color:#1a1a1a">How to get your GitHub token:</strong><br>
+          1. github.com → profile picture → Settings<br>
+          2. Scroll to bottom → Developer settings → Personal access tokens → Tokens (classic)<br>
+          3. Generate new token → check "repo" scope → copy it<br>
+          4. Paste it above and click Save<br>
+          5. Repository: <strong style="color:#1a1a1a">rtabbara1/CT-Credential-Trackig</strong>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="overlay" id="modal">
+  <div class="modal">
+    <h3 id="modal-title">Add Tech</h3>
+    <div class="fg">
+      <div class="fi"><label>First Name</label><input type="text" id="f-first" /></div>
+      <div class="fi"><label>Last Name</label><input type="text" id="f-last" /></div>
+      <div class="fi full"><label>Email</label><input type="email" id="f-email" /></div>
+      <div class="fi"><label>ARRT Expiration</label><input type="date" id="f-arrt" /></div>
+      <div class="fi"><label>State License Expiration</label><input type="date" id="f-lic" /></div>
+      <div class="fi"><label>BLS Expiration</label><input type="date" id="f-bls" /></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-dark" onclick="saveTech()">Save Tech</button>
+    </div>
+  </div>
+</div>
+<div id="toast"></div>
+<script>
+const ADMIN_PASSWORD = "CTAdmin2024!";
+let editIdx = null;
+let ghToken = localStorage.getItem("gh_token") || "";
+let ghRepo  = localStorage.getItem("gh_repo")  || "rtabbara1/CT-Credential-Trackig";
+
+let TECHS = [
+{ firstName: "Karen", lastName: "Calabro", email: "Karen_Calabro@atriushealth.org", arrt: "2026-07-31", stateLicense: "2027-08-31", bls: "2027-03-01" },
+{ firstName: "Christina", lastName: "Desmond", email: "Christina_Desmond@atriushealth.org", arrt: "2026-07-31", stateLicense: "2027-08-31", bls: "2026-10-01" },
+{ firstName: "Adam", lastName: "Dykas", email: "Adam_Dykas@atriushealth.org", arrt: "2027-07-31", stateLicense: "2027-08-31", bls: "2027-05-01" },
+{ firstName: "Anthony", lastName: "Gattonini", email: "Anthony_Gattonini@atriushealth.org", arrt: "2026-08-31", stateLicense: "2027-09-30", bls: "2026-10-01" },
+{ firstName: "Ibrahim", lastName: "Haboub", email: "Ibrahim_Haboub@atriushealth.org", arrt: "2027-08-31", stateLicense: "2027-09-30", bls: "2027-06-01" },
+{ firstName: "Stacey", lastName: "Hurley", email: "Stacey_Hurley@atriushealth.org", arrt: "2027-05-31", stateLicense: "2027-06-30", bls: "2027-05-01" },
+{ firstName: "Stacie", lastName: "Joyce", email: "Stacie_Joyce@atriushealth.org", arrt: "2026-05-31", stateLicense: "2027-06-30", bls: "2028-02-01" },
+{ firstName: "Mary", lastName: "Mello", email: "Mary_Mello@atriushealth.org", arrt: "2026-07-31", stateLicense: "2027-08-31", bls: "2027-03-01" },
+{ firstName: "Dona", lastName: "Menutole", email: "Dona_Menutole@atriushealth.org", arrt: "2027-01-31", stateLicense: "2027-02-28", bls: "2028-03-01" },
+{ firstName: "Kelley", lastName: "Secord", email: "Kelly_Secord@atriushealth.org", arrt: "2027-10-31", stateLicense: "2027-11-30", bls: "2026-10-01" },
+{ firstName: "Christine", lastName: "Sorrento", email: "Christine_Sorrento@atriushealth.org", arrt: "2026-10-31", stateLicense: "2027-11-30", bls: "2027-10-01" },
+{ firstName: "Nancy", lastName: "Spaulding", email: "Nancy_Spaulding@atriushealth.org", arrt: "2026-09-30", stateLicense: "2027-10-31", bls: "2027-03-01" },
+{ firstName: "Kevin", lastName: "Suslavicius", email: "Kevin_Suslavicius@atriushealth.org", arrt: "2027-07-31", stateLicense: "2027-08-31", bls: "2027-10-01" },
+{ firstName: "Raghda", lastName: "Tabbara", email: "Raghda_Tabbara@atriushealth.org", arrt: "2024-01-31", stateLicense: "2027-02-28", bls: "2026-09-30" },
+{ firstName: "Mary", lastName: "Thompson", email: "Mary_Thompson@atriushealth.org", arrt: "2026-10-31", stateLicense: "2027-11-30", bls: "2027-09-30" },
+{ firstName: "Cheryl", lastName: "Whyte", email: "Cheryl_Whyte@atriushealth.org", arrt: "2027-04-30", stateLicense: "2027-05-31", bls: "2026-12-01" },
+];
+
+document.getElementById("pw").addEventListener("keydown", e => { if (e.key === "Enter") doLogin(); });
+function doLogin() {
+  if (document.getElementById("pw").value === ADMIN_PASSWORD) {
+    document.getElementById("login-screen").style.display = "none";
+    document.getElementById("app").style.display = "block";
+    document.getElementById("s-token").value = ghToken;
+    document.getElementById("s-repo").value = ghRepo;
+    if (!ghToken) document.getElementById("github-banner").style.display = "flex";
+    render();
+  } else {
+    document.getElementById("login-err").style.display = "block";
+    document.getElementById("pw").value = "";
+  }
+}
+function logout() { document.getElementById("app").style.display = "none"; document.getElementById("login-screen").style.display = "flex"; document.getElementById("pw").value = ""; }
+function showTab(name, btn) {
+  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+  document.querySelectorAll("header nav button").forEach(b => b.classList.remove("active"));
+  document.getElementById("tab-" + name).classList.add("active");
+  btn.classList.add("active");
+  if (name === "techs") renderTable();
+}
+function daysUntil(d) { if (!d) return null; const today = new Date(); today.setHours(0,0,0,0); const exp = new Date(d + "T00:00:00"); exp.setHours(0,0,0,0); return Math.ceil((exp - today) / 86400000); }
+function fmt(d) { if (!d) return "—"; return new Date(d + "T00:00:00").toLocaleDateString("en-US", { month:"short", day:"numeric", year:"numeric" }); }
+function badge(d) {
+  const days = daysUntil(d);
+  if (days === null) return '<span class="badge b-gray">N/A</span>';
+  if (days <= 0)  return '<span class="badge b-red">EXPIRED</span>';
+  if (days <= 7)  return '<span class="badge b-red">' + days + 'd left</span>';
+  if (days <= 14) return '<span class="badge b-orange">' + days + 'd left</span>';
+  if (days <= 30) return '<span class="badge b-yellow">' + days + 'd left</span>';
+  return '<span class="badge b-green">' + fmt(d) + '</span>';
+}
+function render() {
+  const CREDS = [{key:"arrt",label:"ARRT"},{key:"stateLicense",label:"State License"},{key:"bls",label:"BLS"}];
+  let expired=0, soon=0, ok=0, alerts=[];
+  for (const t of TECHS) { for (const c of CREDS) { const d = daysUntil(t[c.key]); if (d===null) continue; if (d<=0){expired++;alerts.push({t,c,d});}else if(d<=30){soon++;alerts.push({t,c,d});}else ok++; } }
+  document.getElementById("s-expired").textContent = expired;
+  document.getElementById("s-soon").textContent = soon;
+  document.getElementById("s-ok").textContent = ok;
+  document.getElementById("s-total").textContent = TECHS.length;
+  alerts.sort((a,b) => a.d - b.d);
+  const list = document.getElementById("alert-list");
+  if (!alerts.length) { list.innerHTML = '<div class="empty">All credentials are current — no alerts.</div>'; return; }
+  list.innerHTML = alerts.map(function(a) {
+    const icon = a.d <= 0 ? "🚨" : a.d <= 7 ? "⚠️" : "🔔";
+    const cls  = a.d <= 0 ? "ai-red" : a.d <= 14 ? "ai-orange" : "ai-yellow";
+    const msg  = a.d <= 0 ? "Expired " + Math.abs(a.d) + " days ago" : "Expires in " + a.d + " days — " + fmt(a.t[a.c.key]);
+    return '<div class="alert-row"><div class="alert-icon ' + cls + '">' + icon + '</div><div class="alert-info"><strong>' + a.t.firstName + ' ' + a.t.lastName + ' — ' + a.c.label + '</strong><span>' + msg + '</span></div></div>';
+  }).join("");
+  renderTable();
+}
+function renderTable() {
+  const tbody = document.getElementById("tech-tbody");
+  tbody.innerHTML = TECHS.map(function(t,i) {
+    return '<tr><td><div class="tech-name">' + t.firstName + ' ' + t.lastName + '</div></td><td><div class="tech-email">' + t.email + '</div></td><td>' + badge(t.arrt) + '</td><td>' + badge(t.stateLicense) + '</td><td>' + badge(t.bls) + '</td><td><div style="display:flex;gap:6px"><button class="btn btn-outline btn-sm" onclick="openEdit(' + i + ')">Edit</button><button class="btn btn-red btn-sm" onclick="deleteTech(' + i + ')">Delete</button></div></td></tr>';
+  }).join("");
+}
+function openAdd() { editIdx=null; document.getElementById("modal-title").textContent="Add Tech"; ["f-first","f-last","f-email","f-arrt","f-lic","f-bls"].forEach(function(id){document.getElementById(id).value="";}); document.getElementById("modal").classList.add("open"); }
+function openEdit(i) { editIdx=i; const t=TECHS[i]; document.getElementById("modal-title").textContent="Edit Tech"; document.getElementById("f-first").value=t.firstName; document.getElementById("f-last").value=t.lastName; document.getElementById("f-email").value=t.email; document.getElementById("f-arrt").value=t.arrt; document.getElementById("f-lic").value=t.stateLicense; document.getElementById("f-bls").value=t.bls; document.getElementById("modal").classList.add("open"); }
+function closeModal() { document.getElementById("modal").classList.remove("open"); }
+function saveTech() {
+  const t = { firstName: document.getElementById("f-first").value.trim(), lastName: document.getElementById("f-last").value.trim(), email: document.getElementById("f-email").value.trim(), arrt: document.getElementById("f-arrt").value, stateLicense: document.getElementById("f-lic").value, bls: document.getElementById("f-bls").value };
+  if (!t.firstName || !t.email) { toast("First name and email required.", true); return; }
+  if (editIdx === null) TECHS.push(t); else TECHS[editIdx] = t;
+  closeModal(); render(); toast(editIdx === null ? "Tech added!" : "Tech updated!");
+}
+function deleteTech(i) { if (!confirm("Remove " + TECHS[i].firstName + " " + TECHS[i].lastName + "?")) return; TECHS.splice(i,1); renderTable(); render(); toast("Tech removed."); }
+function buildScript() {
+  const rows = TECHS.map(function(t){ return '{ firstName: "' + t.firstName + '", lastName: "' + t.lastName + '", email: "' + t.email + '", arrt: "' + t.arrt + '", stateLicense: "' + t.stateLicense + '", bls: "' + t.bls + '" }'; }).join(",\n  ");
+  return 'import nodemailer from "nodemailer";\nconst GMAIL_USER = process.env.OUTLOOK_USER;\nconst GMAIL_PASSWORD = process.env.OUTLOOK_PASSWORD;\nconst SUPERVISOR_EMAIL = "Raghda_Tabbara@atriushealth.org";\nconst MANAGER_EMAIL = "Cheryl_Whyte@atriushealth.org";\nconst TECHS = [\n  ' + rows + ',\n];\nconst CREDENTIALS = [{key:"arrt",label:"ARRT Certification"},{key:"stateLicense",label:"State License"},{key:"bls",label:"BLS Certification"}];\nconst REMINDER_DAYS = [30,14,7];\nfunction daysUntil(d){const today=new Date();today.setHours(0,0,0,0);const exp=new Date(d+"T00:00:00");exp.setHours(0,0,0,0);return Math.ceil((exp-today)/86400000);}\nfunction fmt(d){return new Date(d+"T00:00:00").toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"});}\nfunction upcomingEmail(tech,label,exp,days){const tag=days===7?"FINAL NOTICE":days===14?"Urgent Reminder":"Action Required";return{subject:"["+tag+"] "+label+" - "+tech.firstName+" "+tech.lastName+" (expires "+fmt(exp)+")",text:"Hi "+tech.firstName+",\\n\\nYour "+label+" expires in "+days+" days on "+fmt(exp)+".\\n\\nPlease renew before the expiration date.\\n\\nThank you,\\nCT Imaging Department"};}\nfunction expiredEmail(tech,label,exp,daysOver){const dw=daysOver===1?"day":"days";return{subject:"[EXPIRED - "+daysOver+" "+dw+" overdue] "+label+" - "+tech.firstName+" "+tech.lastName,text:"Hi "+tech.firstName+",\\n\\nYour "+label+" EXPIRED on "+fmt(exp)+" - "+daysOver+" "+dw+" ago.\\n\\nPlease contact your supervisor immediately.\\n\\nThank you,\\nCT Imaging Department"};}\nfunction managerSummaryEmail(items){const lines=items.map(function(i){return"  - "+i.tech.firstName+" "+i.tech.lastName+" - "+i.label+" (expired "+fmt(i.exp)+", "+i.daysOver+" days ago)";}).join("\\n");return{subject:"[Daily Alert] "+items.length+" Expired Credentials Require Attention",text:"Hello,\\n\\nThe following credentials are EXPIRED:\\n\\n"+lines+"\\n\\nPlease follow up.\\n\\nThank you,\\nCT Imaging Department"};}\nasync function main(){console.log("Starting...");if(!GMAIL_USER||!GMAIL_PASSWORD){console.error("ERROR: Missing secrets.");process.exit(1);}\nconst transport=nodemailer.createTransport({service:"gmail",auth:{user:GMAIL_USER,pass:GMAIL_PASSWORD}});\ntry{await transport.verify();console.log("SMTP OK!");}catch(e){console.error("SMTP FAILED:",e.message);process.exit(1);}\nconst from="CT Credentials Tracker <"+GMAIL_USER+">";\nconst expired=[];let sent=0,failed=0;\nfor(const tech of TECHS){for(const cr of CREDENTIALS){const exp=tech[cr.key];if(!exp)continue;const days=daysUntil(exp);const cc=[SUPERVISOR_EMAIL,MANAGER_EMAIL].filter(function(e){return e!==tech.email;}).join(", ");if(days<=0){const daysOver=Math.abs(days);expired.push({tech:tech,label:cr.label,exp:exp,daysOver:daysOver});const em=expiredEmail(tech,cr.label,exp,daysOver);try{await transport.sendMail({from:from,to:tech.email,cc:cc||undefined,subject:em.subject,text:em.text});console.log("SENT expired: "+tech.firstName+" "+tech.lastName);sent++;}catch(e){console.error("FAILED: "+tech.firstName+" "+tech.lastName+" | "+e.message);failed++;}}else if(REMINDER_DAYS.includes(days)){const em=upcomingEmail(tech,cr.label,exp,days);try{await transport.sendMail({from:from,to:tech.email,cc:cc||undefined,subject:em.subject,text:em.text});console.log("SENT "+days+"-day: "+tech.firstName+" "+tech.lastName);sent++;}catch(e){console.error("FAILED: "+tech.firstName+" "+tech.lastName+" | "+e.message);failed++;}}}}\nif(expired.length>0){const em=managerSummaryEmail(expired);try{await transport.sendMail({from:from,to:[SUPERVISOR_EMAIL,MANAGER_EMAIL].join(", "),subject:em.subject,text:em.text});console.log("Manager summary sent.");}catch(e){console.error("Manager summary failed:",e.message);}}\nconsole.log("Done. "+sent+" sent, "+failed+" failed, "+expired.length+" expired.");if(failed>0)process.exit(1);}\nmain();\n';
+}
+async function syncToGitHub() {
+  if (!ghToken) { toast("Add your GitHub token in Settings first.", true); return; }
+  toast("Saving to GitHub...");
+  const path = "scripts/send-reminders.js";
+  const headers = { "Authorization": "token " + ghToken, "Content-Type": "application/json" };
+  let sha = "";
+  try { const r = await fetch("https://api.github.com/repos/" + ghRepo + "/contents/" + path, {headers}); if (r.ok) { const d = await r.json(); sha = d.sha; } } catch(e) {}
+  const content = btoa(unescape(encodeURIComponent(buildScript())));
+  const body = { message: "Update credentials via dashboard", content: content };
+  if (sha) body.sha = sha;
+  try {
+    const r = await fetch("https://api.github.com/repos/" + ghRepo + "/contents/" + path, { method: "PUT", headers: headers, body: JSON.stringify(body) });
+    if (r.ok) { toast("Saved to GitHub! Actions will use updated data."); }
+    else { const d = await r.json(); toast("GitHub error: " + (d.message || r.status), true); }
+  } catch(e) { toast("Failed: " + e.message, true); }
+}
+function saveGitHubSettings() { ghToken=document.getElementById("s-token").value.trim(); ghRepo=document.getElementById("s-repo").value.trim(); localStorage.setItem("gh_token",ghToken); localStorage.setItem("gh_repo",ghRepo); document.getElementById("github-banner").style.display=ghToken?"none":"flex"; flashSaved("gh-saved"); }
+function saveRecipients() { flashSaved("rec-saved"); toast("Recipients saved."); }
+function flashSaved(id) { const el=document.getElementById(id); el.classList.add("show"); setTimeout(function(){el.classList.remove("show");},2500); }
+let toastTimer;
+function toast(msg, err) { const el=document.getElementById("toast"); el.textContent=msg; el.className="show"+(err?" err":""); clearTimeout(toastTimer); toastTimer=setTimeout(function(){el.className="";},3500); }
+</script>
+</body>
+</html>
