@@ -1,0 +1,16 @@
+{
+  "name": "ct-credential-reminders",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "nodemailer": "^6.9.9"
+  }
+}
+```
+4. Click **Commit changes**
+
+**File 2:**
+1. Click **Add file → Create new file**
+2. Type this as the filename:
+```
+scripts/send-reminders.js
