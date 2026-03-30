@@ -1,68 +1,139 @@
-PK
-     A~\              ct-credentials/UT	 ÊÖÉiÍÖÉiux
-         PK    A~\ù5€ó}  ‰    ct-credentials/README.mdUT	 ÊÖÉiÊÖÉiux
-         •UÛnÛF}çWb ‘X‹uê üP@uäØˆÕ¢OåŠI“»Ä^,
-ðCŸúE¿0_Ò³KÝRä¡ ‘œË™3g¨3ºÎéÚpÅÊIQ[Ê(Ù$ÉŒUe©²Þ7¸áFªŠ¥¥64œNósš9á˜îeÉÊò9	UÑÏ÷3*‰Ÿ[i„“ZYz’‚>Hwë4,£)K’³3š±ó-õ.É:nm?ØÎèM€…ô‡ Ã­Ž5|[kQ‘[³eZÊšm2 šœ¦•tk¿ÈJÝÐ—?ÿ¢O¼‰aV:m¶ÔS¢a’Y¶n-Õêœ8[eT”npm‹>òÍ»"¢®O
-Ñ#s‹À`5lãKç
-2+'J‡à‰! ¹¢¿8‘®8ïîEUQ¶ Ò—AC¯‚Ï«½½õv]tTü˜Ñ![í
-M¼«µ~<¡Ø’°{†f»³Éê¼CëW”¦`Ø´œìœ"“OÂH±}…“ÝT¾ÅœAiš$/»¹|¡_DíqM^ƒAüÂ£˜ÌóûÉäãïóÙhZÀ) [Cg¤·;5aT£›édL_…<g³_'Ó÷]˜ ]e©½r¯í¡ùVX»Ñ¦B`òÝ-÷©ïrZƒŒñÍ´Š
-µúÒ´ÁÐDñ
-N†mK»DiJ0«ÀF`lœ?Ðpžßâ(„¸$Y7–ËŒFûž·À(x
-%TZqÒI2à@¹Î éœX@ÇÅ°R«¥4Í1rt`ª,	ì}ÖX N¼Ó
-6ª„2±›OŒéTbKÀ—¦ï®..h8¦‘À.•¦ÀŠ™Ä5›·•*ÀB,(lœ`Ù&-+*lidëìa6ƒÃÆgŸm‘@…7xŒí8.×¡‡p_ä£ëÛYÄFlëp<‹7½â7|ãñà=†
-2¾Ÿ¼Å~wÒí µÓ—?þîx
-h§^© ¶Ê‡NwdˆŒ"ýêíEÓÃ*œ!a¶ËZoë7rµÂ¾†ul®$ÐÕÛ,¹^sÕ¦ZcO¢<1g¬3XÞ¬%ŽÊµ´aÌu: QÔ³-×\ùš¡ä|Wæ€JÙJxÚíÇåE™¥ƒ>yIÍ n¿§©X­+A=ë[6OÒjÓ‡PÍ¶¦X¨Ñ«óæíÍvHÂÞýï¨ ž?i¨»Ú££þ–PÜ7Ótÿ"Ö7€/¨ÝåýîˆæPK
-     8~\              ct-credentials/scripts/UT	 ¼ÖÉiÍÖÉiux
-         PK    %~\ÎH—j   †   #  ct-credentials/scripts/package.jsonUT	 •ÖÉi”ÖÉiux
-         %Á
-Ã Dï~…ì¹‘ôRH>& ît
-ÆJÈ¿wmnÃ›7Ìé¼'´zJ}J
-íóÔPDí Ç>–¤êðžaóMûwÿOKåwÆÍ;l¨IpXw'•Q¢d´áo¯°„…¬ºÜå~PK    8~\=rµÌ
-  Ó"  (  ct-credentials/scripts/send-reminders.jsUT	 ¼ÖÉi¼ÖÉiux
-         ÕZQoI~çWTP¤Ã
-'¶¯sç6öÆØàÛ‹²n˜Æôzfšëî±Ã:Hût?àv¥{¹§ûiù%WÕ=3Ì€q Zi³r<]ÝÕ_W}U]ÅD©„Òã>W0R2€â| xP(<}
-Ÿ~ý?ÐáH\ÅOèª7æšÃPÜû•0ÇÑ >ýëßÐåÆˆðJÇCÅzpÃ”`Ÿ;ÉÑÐêÂ8¿èžŸ¿î_t[ ŸC˜(9äZWyxSÍŠ–¼9êv¿?ï4W,IÄè·®{ñ¦ÕùûI÷¼ÓoµNNq]±Ã®Æë÷Ø`Àû+3JDzÌ™oÆU©®ŠÉží£³£W­d¡…YlŒ¹šúýïÇSÃï[™á@Ç ¤6È–ßÝ_êy	ÑÄc†÷ÏˆŽ£xÈo™_î	fÌá-þTÚíJ³‰ž÷#n90Aã€‘1_ª±Y{­Æqmù® p #¡´9c¯Cñ5CÅÅ²¥„ÏÒáóÙ@ÉX`ã-™ÜeË®p“)epò³Ú³ÝJm¯²³mð$§bÈCÍl¯RÛw²¯Ó¡Jm»³òÎÆX	´g¸ ƒ³Éu Cog:¹ËïÇúÅ@w+ÛµU@<$–È^3Œ§@irßŠVZ3oÑ½-úb%ÐÐŒe8µûd€¾bÆÈP„Â
-R nr?•®aÑý €þ¹²S[×¢'ÅÆ"XzÌ2$fJ€Æ“ûNºG÷6ŠC»«€v
-rgÐÐHùÉð¨›ÜwÂÕÞÏ}ñ ÐÝe +]O{
-¾ô;9ò%ŽºÉ}+|€¥9×ot¿R{¶
-h›©é=ÁÔæ¾/—€Òä¾­L¿azjJ›™–†‘‘~lÔ(Mî'¢5]¿ý Ðg•gû
-]	ô5ÚçŽb!•·ÈQš<í;ÙZ®ß£0^	t{{ƒ¨Or8Ï'ü®Tx ™·h:¹ŸÈï…›uýF@÷ zÆÂaBÒ,Ð	‹|ë´\µ“û©l•QsSÐ½@kpô5¿÷\õÝHûìF 
-ç®ÇÉýŒìs	ã›iµE]±¸ÄÑ¸x\¸ë?WY.%üç›Sâ€
-ÒSo,ƒ‰–až£6=%¢u¢~cŽ®êJè%‹Ú’z)>\oßõµç«9š\Ù¨Oþû´khtZÍÖYïäèt^¨^ó).¡2	‹OnK’N§ 
-®Œ‰!£^'=º[—c“ˆ[×¥aHÆóKcöªH–ü
-1-ï4ÇÞiµOÎšØ¶4ÞZô;µ2l?/ÃÞû\{rÌý	WúÙšäÚ”QÚî”©¾ðKÔªtÚ‚;´§3‹‘(Fs`ãM—¶ÜXUss,#¥Kh§ø³u®ã& Ùu±nx‚±U«Õí§ˆÊpâJUØG*„6CÞ9,‘ÚŠ°Oa÷y~pö¬0?Ñ(0ù³ÄŠ>¦jä©2Ÿ7“{©ÈÃÊE	Ej °1cd“/í¥€0ð!Œ®ÄŸ§œ©ì ®™-`‹&C æEjÉ`³ÓºL¦°*uÎì
-ÍH£pxx{ â·'gG§pvÞ;i´Š«^€ÜO:}û9M¿PWxŸB‡ãÆWE Ðsp:üŸ‘PÜ+fìíŽª£Á|ˆéáòÝã;D1{ï,Ò|úùW| ðÕ4EÍ’‘$9Í€Ü…Ê5JÈ%ø´5Ûº,[õ†0õÂå±XVT.Þ"æÛ%jDˆct¶™;¡³š«…ÂŸ3Í]Ÿ
->’ŠÛ6Û*`1Û1s`s­(U†ôíÌÄ­C7}óBÂ[©®QÝÉ¦2‚1»ÁÆÜWœyS2K Œá‰Ò–&³-+ÃÄ%æš©›¥#”Þ-jíYxMãåB£ '»B:@“O˜2ù‰¬Û@ŸàßU÷^sU(4upW%ÄW%”º©æ-ø.íƒMûPj³]qå,>ËÓÐ™Ô{ˆ…ç7<—
-¼Û˜ˆ$pì"ráˆ%IdQëoNð‚Àãý»‘m¼ÛHüÛ‹øÆ$û:%@òô‰÷[ÄÅ®äœXhì¤Ì¢S?36ˆ àž@’ùSG3-ýb¡ÐÖ÷BõlÂ­ð}¤)hò:ÇM§d_ˆ([Þç,Àuî+%Â€„zª
-¾BÅçïFA€E’ã•@|¹dæcy‰	¬ °I©t «Ù‡É_ÆLÚŒ„)
-/ÿ¿u²•óÌ‘8uyY†”ï§ÇÖåÍóÕ¥KÅÂâÖCaÐDËLáÈÇZ„ÈîLáóðÊŒ‘šñ®soågÌOl«‹³$ƒÃ&¥\±ÔL—‰$Fÿ¾%r Oì÷¬s‚i,‘p‘m½`$”£0¦±W/ÐDäEô}‹¡2"fH<æ¡KzÂrÔ7Â‹vŸUˆÃÇí<œrÜÚKb‚‘=\@P‰0âèf²”‹Ô“ä¬%Ð	¸/…¡ç•^›î‡ß½NûÍê=1‚Ò£Ü+„áÑâ€y´JŸW¹RR•Š­Nç¼S‡¶ÐšÌ™S‚©oé%ƒv/4ª.Ò„)m»r(®m
-µ}Ct˜yGTÅÅ˜çz‰°DˆÆRS§¢3©ÊÖð|g÷Eoo[dÑ´:¼Øß£ Ü=RØºŒœXD5ÛDšcu–E—5Óº¾|ÛQêvî`(&˜©ñévOov°ÌSœ‚ù"$ÅR‰Ÿ0.Ün´Ž
-¾ø|ö­-ƒ/‘mcÞÁ7ï²xf//“·(	Ù±ÁÄçÆÝ‡TÈN$ªáVXä@)¶'Å¢¹WÎ“©mâD
-3š—é×¶rYÖVï‡Vß;\ôþ ,{(
-¦áyÍÊ¶ÞÌt43;a8´fx·ø^©œ[ô´o¸*qÊû:UK$Ã–ˆeµ,»ù7hŒäYTîšp-h;9F‰«ôÂåsÑANõ]’ÑË6Ï¢9×.©M¯û0’ô–‰LD`OzmÒtgi„ûÈzÆe4iÌŠAa11Âœì•Q¥{ÍCÚ—W¥ËOÿý%MðôžqÛñãünü˜½ ½¤r»ÌlFT}ò$yžvÜÈÌßÊ8ŸcÒà[Çë"{ÖìæõK4g5À|‚ÕFfG™=?°w °$šäüª‡~äñ˜‹Ì¹Ï½k5n_‰oã.©BÕdZmnìè¯Í£ÉïY|O7ì~ÂÅ®XÐ®ü¤Ê;Sž?I«sJ‡‹¥„¶Wc’
-â:ëe’NVâ¾Š7Öb1çÀZþÿ|nœg¿UdX"B\±§v±wHéñ]þ´³ÔTk–0œë—Ý¼P‹·p~«½:KîýàaS†¼ŠL X3
-Žjl§ak¢‘Upç• ‚®hre|=Z.€¼	Ø5v!ÔBÅÿ##þ.D±8ÅÊ4^ª,Y5xÂ
-ÿd/`¯ðPK
-      ~\              ct-credentials/.github/UT	 ŒÖÉiÍÖÉiux
-         PK
-     #~\            !  ct-credentials/.github/workflows/UT	 ’ÖÉiÍÖÉiux
-         PK    #~\CðoF§  3  3  ct-credentials/.github/workflows/send-reminders.ymlUT	 ’ÖÉi’ÖÉiux
-         RïkÛ0ýî¿âÁiGÕ%¡c ¬$a+Ûš;ìcQì«­Ö–Œ~$”Òÿ}’c7!t0Â§÷îNïÝ)ÑÇ,ÃÌPAÊIQcET›$Zñ°yE…¯)þïð™Ç¸þ…EšálÍØ§s|Ád¯CØ³æÞHUb.žjYV©ØÆ8“
-ál1Ï."—]_ ¯„*	NsŒÆ˜Lð!~£®CnÂ+:`z vÚ<Þ×zwWHÛ
-—W<tµÕá×P>hqF–%ÜÝà›tßýë›$yÐÛI#U03Þ
-4^Y{úWÎ³Z8²®ƒ¬£¶gÅ§©½{åÚ;juÞ’å¹“ZÙyÏùº½JNÒSrð-nuA—öù–œo™
-œXaàì¤«økDœmƒÙY6N›Ý(ë‚C(¨
-ÊIå’-ƒpÕ6{Ö¡Op;ÌŽÒPî´yâa'Œl=­¿ò*ìu•g{úÿ(¤¶ÇÒ–ëìçrùãn.VïŸŸÃèB#g/¼¼¼‘óû:Mÿ,Wó·óô8wïDpódAâ€þPK
-     A~\                     íA    ct-credentials/UT ÊÖÉiux
-         PK    A~\ù5€ó}  ‰           ¤I   ct-credentials/README.mdUT ÊÖÉiux
-         PK
-     8~\                     íA  ct-credentials/scripts/UT ¼ÖÉiux
-         PK    %~\ÎH—j   †   #         ¤i  ct-credentials/scripts/package.jsonUT •ÖÉiux
-         PK    8~\=rµÌ
-  Ó"  (         ¤0  ct-credentials/scripts/send-reminders.jsUT ¼ÖÉiux
-         PK
-      ~\                     íA°  ct-credentials/.github/UT ŒÖÉiux
-         PK
-     #~\            !         íA  ct-credentials/.github/workflows/UT ’ÖÉiux
-         PK    #~\CðoF§  3  3         ¤\  ct-credentials/.github/workflows/send-reminders.ymlUT ’ÖÉiux
-         PK      $  p    
+import nodemailer from "nodemailer";
+
+const OUTLOOK_USER     = process.env.OUTLOOK_USER;
+const OUTLOOK_PASSWORD = process.env.OUTLOOK_PASSWORD;
+
+const SUPERVISOR_EMAIL = "Raghda_Tabbara@atriushealth.org";
+const MANAGER_EMAIL    = "Cheryl_Whyte@atriushealth.org";
+
+const TECHS = [
+  { firstName: "Karen",     lastName: "Calabro",     email: "Karen_Calabro@atriushealth.org",      arrt: "2026-07-31", stateLicense: "2027-08-31", bls: "2027-03-01" },
+  { firstName: "Christina", lastName: "Desmond",     email: "Christina_Desmond@atriushealth.org",   arrt: "2026-07-31", stateLicense: "2027-08-31", bls: "2026-10-01" },
+  { firstName: "Adam",      lastName: "Dykas",       email: "Adam_Dykas@atriushealth.org",          arrt: "2027-07-31", stateLicense: "2027-08-31", bls: "2027-05-01" },
+  { firstName: "Anthony",   lastName: "Gattonini",   email: "Anthony_Gattonini@atriushealth.org",   arrt: "2026-08-31", stateLicense: "2027-09-30", bls: "2026-10-01" },
+  { firstName: "Ibrahim",   lastName: "Haboub",      email: "Ibrahim_Haboub@atriushealth.org",      arrt: "2027-08-31", stateLicense: "2027-09-30", bls: "2027-06-01" },
+  { firstName: "Stacey",    lastName: "Hurley",      email: "Stacey_Hurley@atriushealth.org",       arrt: "2027-05-31", stateLicense: "2027-06-30", bls: "2027-05-01" },
+  { firstName: "Stacie",    lastName: "Joyce",       email: "Stacie_Joyce@atriushealth.org",        arrt: "2026-05-31", stateLicense: "2027-06-30", bls: "2028-02-01" },
+  { firstName: "Mary",      lastName: "Mello",       email: "Mary_Mello@atriushealth.org",          arrt: "2026-07-31", stateLicense: "2027-08-31", bls: "2027-03-01" },
+  { firstName: "Dona",      lastName: "Menutole",    email: "Dona_Menutole@atriushealth.org",       arrt: "2027-01-31", stateLicense: "2027-02-28", bls: "2028-03-01" },
+  { firstName: "Kelley",    lastName: "Secord",      email: "Kelly_Secord@atriushealth.org",        arrt: "2027-10-31", stateLicense: "2027-11-30", bls: "2026-10-01" },
+  { firstName: "Christine", lastName: "Sorrento",    email: "Christine_Sorrento@atriushealth.org",  arrt: "2026-10-31", stateLicense: "2027-11-30", bls: "2027-10-01" },
+  { firstName: "Nancy",     lastName: "Spaulding",   email: "Nancy_Spaulding@atriushealth.org",     arrt: "2026-09-30", stateLicense: "2027-10-31", bls: "2027-03-01" },
+  { firstName: "Kevin",     lastName: "Suslavicius", email: "Kevin_Suslavicius@atriushealth.org",   arrt: "2027-07-31", stateLicense: "2027-08-31", bls: "2027-10-01" },
+  { firstName: "Raghda",    lastName: "Tabbara",     email: "Raghda_Tabbara@atriushealth.org",      arrt: "2024-01-31", stateLicense: "2027-02-28", bls: "2026-09-30" },
+  { firstName: "Mary",      lastName: "Thompson",    email: "Mary_Thompson@atriushealth.org",       arrt: "2026-10-31", stateLicense: "2027-11-30", bls: "2027-09-30" },
+  { firstName: "Cheryl",    lastName: "Whyte",       email: "Cheryl_Whyte@atriushealth.org",        arrt: "2027-04-30", stateLicense: "2027-05-31", bls: "2026-12-01" },
+];
+
+const CREDENTIALS = [
+  { key: "arrt",         label: "ARRT Certification" },
+  { key: "stateLicense", label: "State License" },
+  { key: "bls",          label: "BLS Certification" },
+];
+
+const REMINDER_DAYS = [30, 14, 7];
+
+function daysUntil(dateStr) {
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const exp   = new Date(dateStr + "T00:00:00"); exp.setHours(0, 0, 0, 0);
+  return Math.ceil((exp - today) / 86400000);
+}
+
+function fmt(dateStr) {
+  return new Date(dateStr + "T00:00:00").toLocaleDateString("en-US", {
+    month: "long", day: "numeric", year: "numeric",
+  });
+}
+
+function upcomingEmail(tech, label, exp, days) {
+  const tag = days === 7 ? "FINAL NOTICE" : days === 14 ? "Urgent Reminder" : "Action Required";
+  return {
+    subject: `[${tag}] ${label} — ${tech.firstName} ${tech.lastName} (expires ${fmt(exp)})`,
+    text: `Hi ${tech.firstName},\n\nYour ${label} expires in ${days} days on ${fmt(exp)}.\n\nPlease renew before the expiration date to remain compliant and able to work.\n\nIf you have already submitted your renewal paperwork, please notify your supervisor.\n\nThank you,\nCT Imaging Department — Credential Tracker\n\nCC: Raghda Tabbara (Supervisor) | Cheryl Whyte (Manager)`,
+  };
+}
+
+function expiredEmail(tech, label, exp, daysOver) {
+  const dw = daysOver === 1 ? "day" : "days";
+  return {
+    subject: `[EXPIRED - ${daysOver} ${dw} overdue] ${label} — ${tech.firstName} ${tech.lastName}`,
+    text: `Hi ${tech.firstName},\n\nYour ${label} EXPIRED on ${fmt(exp)} — ${daysOver} ${dw} ago.\n\nPlease contact your supervisor or manager immediately to resolve this.\n\nThis reminder will be sent every day until the credential is updated in the system.\n\nThank you,\nCT Imaging Department — Credential Tracker\n\nCC: Raghda Tabbara (Supervisor) | Cheryl Whyte (Manager)`,
+  };
+}
+
+function managerSummaryEmail(items) {
+  const lines = items.map(({ tech, label, exp, daysOver }) => {
+    const dw = daysOver === 1 ? "day" : "days";
+    return `  - ${tech.firstName} ${tech.lastName} — ${label} (expired ${fmt(exp)}, ${daysOver} ${dw} ago)`;
+  }).join("\n");
+  return {
+    subject: `[Daily Alert] ${items.length} Expired Credential${items.length === 1 ? "" : "s"} Require Attention`,
+    text: `Hello,\n\nThe following CT Tech credentials are currently EXPIRED and unresolved:\n\n${lines}\n\nEach tech has been notified individually. Please follow up as needed.\n\nThis alert will continue daily until all expired credentials are resolved.\n\nThank you,\nCT Imaging Department — Credential Tracker`,
+  };
+}
+
+async function main() {
+  if (!OUTLOOK_USER || !OUTLOOK_PASSWORD) {
+    console.error("ERROR: Missing OUTLOOK_USER or OUTLOOK_PASSWORD secrets.");
+    process.exit(1);
+  }
+
+  const transport = nodemailer.createTransport({
+    host: "smtp.office365.com",
+    port: 587,
+    secure: false,
+    auth: { user: OUTLOOK_USER, pass: OUTLOOK_PASSWORD },
+    tls: { ciphers: "SSLv3", rejectUnauthorized: false },
+  });
+
+  const from = `CT Credentials Tracker <${OUTLOOK_USER}>`;
+  const expired = [];
+  let sent = 0, failed = 0;
+
+  for (const tech of TECHS) {
+    for (const { key, label } of CREDENTIALS) {
+      const exp  = tech[key]; if (!exp) continue;
+      const days = daysUntil(exp);
+      const cc   = [SUPERVISOR_EMAIL, MANAGER_EMAIL].filter(e => e !== tech.email).join(", ");
+
+      if (days <= 0) {
+        const daysOver = Math.abs(days);
+        expired.push({ tech, label, exp, daysOver });
+        const { subject, text } = expiredEmail(tech, label, exp, daysOver);
+        try {
+          await transport.sendMail({ from, to: tech.email, cc: cc || undefined, subject, text });
+          console.log(`EXPIRED: ${tech.firstName} ${tech.lastName} | ${label} | ${daysOver}d overdue`);
+          sent++;
+        } catch (e) {
+          console.error(`FAILED: ${tech.email} | ${label}: ${e.message}`);
+          failed++;
+        }
+      } else if (REMINDER_DAYS.includes(days)) {
+        const { subject, text } = upcomingEmail(tech, label, exp, days);
+        try {
+          await transport.sendMail({ from, to: tech.email, cc: cc || undefined, subject, text });
+          console.log(`SENT ${days}-day reminder: ${tech.firstName} ${tech.lastName} | ${label}`);
+          sent++;
+        } catch (e) {
+          console.error(`FAILED: ${tech.email} | ${label}: ${e.message}`);
+          failed++;
+        }
+      }
+    }
+  }
+
+  if (expired.length > 0) {
+    const { subject, text } = managerSummaryEmail(expired);
+    try {
+      await transport.sendMail({ from, to: [SUPERVISOR_EMAIL, MANAGER_EMAIL].join(", "), subject, text });
+      console.log(`Manager summary sent (${expired.length} expired)`);
+    } catch (e) {
+      console.error("Manager summary failed:", e.message);
+    }
+  }
+
+  console.log(`Done. ${sent} sent, ${failed} failed, ${expired.length} expired.`);
+  if (failed > 0) process.exit(1);
+}
+
+main();
