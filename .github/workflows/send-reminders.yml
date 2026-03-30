@@ -1,1 +1,30 @@
 
+name: CT Credential Reminders
+
+on:
+  schedule:
+    - cron: '0 12 * * *'
+  workflow_dispatch:
+
+jobs:
+  send-reminders:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: scripts
+
+      - name: Run credential reminder script
+        working-directory: scripts
+        env:
+          OUTLOOK_USER: ${{ secrets.OUTLOOK_USER }}
+          OUTLOOK_PASSWORD: ${{ secrets.OUTLOOK_PASSWORD }}
+        run: node send-reminders.js
