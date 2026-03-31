@@ -704,18 +704,39 @@ function buildScript() {
 async function syncToGitHub() {
   if (!ghToken) { toast("Add your GitHub token in Settings first.", true); return; }
   toast("Saving to GitHub...");
-  const path = "scripts/send-reminders.js";
   const headers = { "Authorization": "token " + ghToken, "Content-Type": "application/json" };
+  const techsStr = 'let TECHS = [\n' + TECHS.map(function(t){
+    return '{ firstName: "' + t.firstName + '", lastName: "' + t.lastName + '", email: "' + t.email + '", arrt: "' + t.arrt + '", stateLicense: "' + t.stateLicense + '", bls: "' + t.bls + '" }';
+  }).join(',\n') + ',\n];';
+
+  // 1. Update docs/index.html so changes persist on reload
+  try {
+    const htmlPath = "docs/index.html";
+    const rh = await fetch("https://api.github.com/repos/" + ghRepo + "/contents/" + htmlPath, {headers});
+    if (!rh.ok) { toast("Could not read index.html from GitHub.", true); return; }
+    const dh = await rh.json();
+    const decoded = decodeURIComponent(escape(atob(dh.content.replace(/\n/g, ''))));
+    const updated = decoded.replace(/let TECHS = \[[\s\S]*?\];/, techsStr);
+    const encoded = btoa(unescape(encodeURIComponent(updated)));
+    const rh2 = await fetch("https://api.github.com/repos/" + ghRepo + "/contents/" + htmlPath, {
+      method: "PUT", headers: headers,
+      body: JSON.stringify({ message: "Update credentials via dashboard", content: encoded, sha: dh.sha })
+    });
+    if (!rh2.ok) { const e = await rh2.json(); toast("Page update error: " + (e.message || rh2.status), true); return; }
+  } catch(e) { toast("Failed to update page: " + e.message, true); return; }
+
+  // 2. Also update the email script
+  const scriptPath = "scripts/send-reminders.js";
   let sha = "";
-  try { const r = await fetch("https://api.github.com/repos/" + ghRepo + "/contents/" + path, {headers}); if (r.ok) { const d = await r.json(); sha = d.sha; } } catch(e) {}
+  try { const r = await fetch("https://api.github.com/repos/" + ghRepo + "/contents/" + scriptPath, {headers}); if (r.ok) { const d = await r.json(); sha = d.sha; } } catch(e) {}
   const content = btoa(unescape(encodeURIComponent(buildScript())));
-  const body = { message: "Update credentials via dashboard", content: content };
+  const body = { message: "Update email script via dashboard", content: content };
   if (sha) body.sha = sha;
   try {
-    const r = await fetch("https://api.github.com/repos/" + ghRepo + "/contents/" + path, { method: "PUT", headers: headers, body: JSON.stringify(body) });
-    if (r.ok) { toast("Saved to GitHub! Actions will use updated data."); }
-    else { const d = await r.json(); toast("GitHub error: " + (d.message || r.status), true); }
-  } catch(e) { toast("Failed: " + e.message, true); }
+    const r = await fetch("https://api.github.com/repos/" + ghRepo + "/contents/" + scriptPath, { method: "PUT", headers: headers, body: JSON.stringify(body) });
+    if (r.ok) { toast("Saved! Changes are live — reload to confirm."); }
+    else { const d = await r.json(); toast("Script error: " + (d.message || r.status), true); }
+  } catch(e) { toast("Failed to update script: " + e.message, true); }
 }
 function saveGitHubSettings() { ghToken=document.getElementById("s-token").value.trim(); ghRepo=document.getElementById("s-repo").value.trim(); localStorage.setItem("gh_token",ghToken); localStorage.setItem("gh_repo",ghRepo); document.getElementById("github-banner").style.display=ghToken?"none":"flex"; flashSaved("gh-saved"); }
 function saveRecipients() { flashSaved("rec-saved"); toast("Recipients saved."); }
