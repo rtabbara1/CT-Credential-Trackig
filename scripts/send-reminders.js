@@ -20,7 +20,6 @@ const TECHS = [
   { firstName: "Raghda", lastName: "Tabbara", email: "Raghda_Tabbara@atriushealth.org", arrt: "2027-01-31", stateLicense: "2027-02-28", bls: "2026-09-30" },
   { firstName: "Mary", lastName: "Thompson", email: "Mary_Thompson@atriushealth.org", arrt: "2026-10-31", stateLicense: "2027-11-30", bls: "2027-09-30" },
   { firstName: "Cheryl", lastName: "Whyte", email: "Cheryl_Whyte@atriushealth.org", arrt: "2027-04-30", stateLicense: "2027-05-31", bls: "2026-12-01" },
-  { firstName: "test", lastName: "test", email: "raghda_tabbara@hotmail.com", arrt: "2027-06-30", stateLicense: "2027-06-30", bls: "2027-10-27" },
   { firstName: "test", lastName: "test", email: "raghda_tabbara@hotmail.com", arrt: "2027-10-30", stateLicense: "2027-10-30", bls: "2027-10-30" },
 ];
 const CREDENTIALS = [{key:"arrt",label:"ARRT Certification"},{key:"stateLicense",label:"State License"},{key:"bls",label:"BLS Certification"}];
