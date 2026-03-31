@@ -740,7 +740,7 @@ async function syncToGitHub() {
   if (sha) body.sha = sha;
   try {
     const r = await fetch("https://api.github.com/repos/" + ghRepo + "/contents/" + scriptPath, { method: "PUT", headers: headers, body: JSON.stringify(body) });
-    if (r.ok) { toast("Saved! Changes are live — reload to confirm."); }
+    if (r.ok) { toast("Saved!"); }
     else { const d = await r.json(); toast("Script error: " + (d.message || r.status), true); }
   } catch(e) { toast("Failed to update script: " + e.message, true); }
 }
