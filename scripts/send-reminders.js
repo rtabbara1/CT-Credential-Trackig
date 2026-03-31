@@ -21,7 +21,7 @@ const TECHS = [
   { firstName: "Mary", lastName: "Thompson", email: "Mary_Thompson@atriushealth.org", arrt: "2026-10-31", stateLicense: "2027-11-30", bls: "2027-09-30" },
   { firstName: "Cheryl", lastName: "Whyte", email: "Cheryl_Whyte@atriushealth.org", arrt: "2027-04-30", stateLicense: "2027-05-31", bls: "2026-12-01" },
   { firstName: "test", lastName: "test", email: "raghda_tabbara@hotmail.com", arrt: "2027-06-30", stateLicense: "2027-06-30", bls: "2027-10-27" },
-  { firstName: "test", lastName: "test", email: "raghda_tabbara@hotmail.com", arrt: "2026-03-30", stateLicense: "", bls: "" },
+  { firstName: "test", lastName: "test", email: "raghda_tabbara@hotmail.com", arrt: "2027-10-30", stateLicense: "2027-10-30", bls: "2027-10-30" },
 ];
 const CREDENTIALS = [{key:"arrt",label:"ARRT Certification"},{key:"stateLicense",label:"State License"},{key:"bls",label:"BLS Certification"}];
 const REMINDER_DAYS = [30,14,7];
