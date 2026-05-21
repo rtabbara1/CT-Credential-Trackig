@@ -23,24 +23,20 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#eef2f7;color:#1e293
 @keyframes livepulse{0%,100%{opacity:1}50%{opacity:.4}}
 
 .main{max-width:1300px;margin:0 auto;padding:18px 14px 60px}
-
 .notice{background:#fff7ed;border:1.5px solid #f97316;border-radius:8px;padding:11px 14px;margin-bottom:16px;font-size:12px;line-height:1.6;color:#7c2d12}
 .notice strong{color:#c2410c}
 
-/* week card */
 .week-card{background:#fff;border-radius:10px;box-shadow:0 1px 5px rgba(0,0,0,.09);margin-bottom:20px;overflow:hidden}
 .week-hdr{background:#0f2a47;color:#fff;padding:9px 16px;font-size:12.5px;font-weight:700;letter-spacing:.3px}
 
-/* day columns */
 .days-row{display:flex;gap:7px;padding:10px;overflow-x:auto}
-.day-col{flex:1;min-width:140px;display:flex;flex-direction:column;gap:6px}
+.day-col{flex:1;min-width:145px;display:flex;flex-direction:column;gap:6px}
 .day-hdr{text-align:center;border-radius:7px;padding:7px 4px}
 .day-hdr.wkday{background:#1e3a5f;color:#fff}
 .day-hdr.wkend{background:#374151;color:#e5e7eb}
 .day-name{font-weight:800;font-size:12px}
 .day-date{font-size:10px;opacity:.75;margin-top:1px}
 
-/* site blocks */
 .site-block{border-radius:8px;padding:8px 7px;border:2px solid}
 .sb-WEY{border-color:#0369a1;background:#f0f9ff}
 .sb-NOR{border-color:#6d28d9;background:#faf5ff}
@@ -50,18 +46,20 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#eef2f7;color:#1e293
 .sb-NOR .sb-title{color:#6d28d9}
 .sb-PLY .sb-title{color:#0f766e}
 
-/* staff chips */
-.staff-chip{font-size:10.5px;padding:3px 7px;border-radius:5px;margin-bottom:3px;font-weight:600;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.chip-wkg{background:#dcfce7;color:#15803d}
-.chip-pto{background:#fee2e2;color:#dc2626;font-style:italic}
+/* staff slots — dropdown per scheduled staff */
+.staff-row{margin-bottom:3px}
+.staff-sel{width:100%;font-size:10.5px;font-weight:600;border-radius:5px;border:1.5px solid #cbd5e1;padding:3px;cursor:pointer;background:#dcfce7;color:#15803d}
+.staff-sel.s-pto{background:#fee2e2;color:#dc2626;font-style:italic;border-color:#fca5a5}
+.staff-sel.s-override{background:#fef3c7;color:#92400e;border-color:#f59e0b}
+.staff-sel.s-off{background:#f1f5f9;color:#94a3b8;border-color:#e2e8f0}
 
-/* weekday kenmore slot */
+/* kenmore slot */
 .kenmore-slot{margin-top:6px;padding-top:5px;border-top:1px dashed #cbd5e1}
 .k-lbl{font-size:9px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.4px;margin-bottom:3px}
 .k-sel{width:100%;font-size:11px;font-weight:600;border-radius:5px;border:1.5px solid #94a3b8;padding:3px;cursor:pointer;background:#fff;color:#475569}
 .k-sel.ks-filled{background:#dbeafe;border-color:#3b82f6;color:#1d4ed8}
 
-/* weekend slots */
+/* weekend */
 .wknd-slots{display:flex;flex-direction:column;gap:3px}
 .slot-lbl{font-size:9px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.4px;margin-top:4px;margin-bottom:2px}
 .wknd-sel{width:100%;font-size:10.5px;font-weight:500;border-radius:5px;border:1.5px solid #94a3b8;padding:3px;cursor:pointer;background:#fff;color:#334155}
@@ -70,14 +68,12 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#eef2f7;color:#1e293
 .wknd-aid:focus{outline:none;border-color:#f59e0b;border-style:solid}
 .wknd-aid.aid-filled{border-color:#f59e0b;border-style:solid;background:#fef3c7;color:#92400e;font-weight:600}
 
-/* totals */
 .site-total{margin-top:5px;text-align:center;font-size:11px;font-weight:800;padding:4px 2px;border-radius:5px}
 .tot-good{background:#dcfce7;color:#15803d}
 .tot-warn{background:#fed7aa;color:#c2410c}
 .tot-crit{background:#dc2626;color:#fff;animation:critpulse 1.2s ease-in-out infinite}
 @keyframes critpulse{0%,100%{opacity:1}50%{opacity:.55}}
 
-/* actions */
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px;padding:0 2px}
 .btn{border:none;border-radius:6px;padding:9px 20px;font-size:13px;font-weight:600;cursor:pointer}
 .btn-print{background:#0f766e;color:#fff}.btn-print:hover{background:#0d5e57}
@@ -106,12 +102,11 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#eef2f7;color:#1e293
 </header>
 
 <div class="main">
-
 <div class="notice">
   <strong>Scanner Replacement:</strong> Kenmore CT is offline Jul 20 – Aug 28.
-  <strong>Weekdays:</strong> Kenmore techs sign up for their site each day. Target: 3 techs/site.
-  <strong>Weekends:</strong> Open sign-up for all techs — 2 techs + 1 tech aid per site.
-  All changes save automatically and update live for everyone.
+  <strong>Weekdays:</strong> Kenmore techs sign up per day · target 3 techs/site.
+  <strong>Weekends:</strong> Open sign-up · 2 techs + 1 tech aid per site.
+  Staff dropdowns can be changed for last-minute swaps. All changes sync live.
 </div>
 
 <div id="scheduleWrap"></div>
@@ -120,7 +115,6 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#eef2f7;color:#1e293
   <button class="btn btn-print" onclick="window.print()">Print / Save PDF</button>
   <button class="btn btn-clear" onclick="clearAll()">Clear All</button>
 </div>
-
 </div>
 
 <script>
@@ -134,61 +128,54 @@ const firebaseConfig = {
   appId: "1:362985135354:web:a0a3c2db798faea195fd43",
   measurementId: "G-92LY72JDN7"
 };
-
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 const scheduleRef = db.ref('schedule');
 
-// ── Data constants ──
+// ── Data ──
 
 const WEEKS = [
   {label:"Week of July 20, 2026", days:[
     {key:"d0720",day:"Mon",date:"Jul 20"},{key:"d0721",day:"Tue",date:"Jul 21"},
     {key:"d0722",day:"Wed",date:"Jul 22"},{key:"d0723",day:"Thu",date:"Jul 23"},
     {key:"d0724",day:"Fri",date:"Jul 24"},
-    {key:"d0725",day:"Sat",date:"Jul 25",weekend:true},
-    {key:"d0726",day:"Sun",date:"Jul 26",weekend:true},
+    {key:"d0725",day:"Sat",date:"Jul 25",weekend:true},{key:"d0726",day:"Sun",date:"Jul 26",weekend:true},
   ]},
   {label:"Week of July 27, 2026", days:[
     {key:"d0727",day:"Mon",date:"Jul 27"},{key:"d0728",day:"Tue",date:"Jul 28"},
     {key:"d0729",day:"Wed",date:"Jul 29"},{key:"d0730",day:"Thu",date:"Jul 30"},
     {key:"d0731",day:"Fri",date:"Jul 31"},
-    {key:"d0801",day:"Sat",date:"Aug 1",weekend:true},
-    {key:"d0802",day:"Sun",date:"Aug 2",weekend:true},
+    {key:"d0801",day:"Sat",date:"Aug 1",weekend:true},{key:"d0802",day:"Sun",date:"Aug 2",weekend:true},
   ]},
   {label:"Week of August 3, 2026", days:[
     {key:"d0803",day:"Mon",date:"Aug 3"},{key:"d0804",day:"Tue",date:"Aug 4"},
     {key:"d0805",day:"Wed",date:"Aug 5"},{key:"d0806",day:"Thu",date:"Aug 6"},
     {key:"d0807",day:"Fri",date:"Aug 7"},
-    {key:"d0808",day:"Sat",date:"Aug 8",weekend:true},
-    {key:"d0809",day:"Sun",date:"Aug 9",weekend:true},
+    {key:"d0808",day:"Sat",date:"Aug 8",weekend:true},{key:"d0809",day:"Sun",date:"Aug 9",weekend:true},
   ]},
   {label:"Week of August 10, 2026", days:[
     {key:"d0810",day:"Mon",date:"Aug 10"},{key:"d0811",day:"Tue",date:"Aug 11"},
     {key:"d0812",day:"Wed",date:"Aug 12"},{key:"d0813",day:"Thu",date:"Aug 13"},
     {key:"d0814",day:"Fri",date:"Aug 14"},
-    {key:"d0815",day:"Sat",date:"Aug 15",weekend:true},
-    {key:"d0816",day:"Sun",date:"Aug 16",weekend:true},
+    {key:"d0815",day:"Sat",date:"Aug 15",weekend:true},{key:"d0816",day:"Sun",date:"Aug 16",weekend:true},
   ]},
   {label:"Week of August 17, 2026", days:[
     {key:"d0817",day:"Mon",date:"Aug 17"},{key:"d0818",day:"Tue",date:"Aug 18"},
     {key:"d0819",day:"Wed",date:"Aug 19"},{key:"d0820",day:"Thu",date:"Aug 20"},
     {key:"d0821",day:"Fri",date:"Aug 21"},
-    {key:"d0822",day:"Sat",date:"Aug 22",weekend:true},
-    {key:"d0823",day:"Sun",date:"Aug 23",weekend:true},
+    {key:"d0822",day:"Sat",date:"Aug 22",weekend:true},{key:"d0823",day:"Sun",date:"Aug 23",weekend:true},
   ]},
   {label:"Week of August 24, 2026", days:[
     {key:"d0824",day:"Mon",date:"Aug 24"},{key:"d0825",day:"Tue",date:"Aug 25"},
     {key:"d0826",day:"Wed",date:"Aug 26"},{key:"d0827",day:"Thu",date:"Aug 27"},
     {key:"d0828",day:"Fri",date:"Aug 28"},
-    {key:"d0829",day:"Sat",date:"Aug 29",weekend:true},
-    {key:"d0830",day:"Sun",date:"Aug 30",weekend:true},
+    {key:"d0829",day:"Sat",date:"Aug 29",weekend:true},{key:"d0830",day:"Sun",date:"Aug 30",weekend:true},
   ]},
 ];
 
 const SITES = [
   {id:"WEY", name:"Weymouth", color:"#0369a1",
-   staff:["Christina Desmond","Mary Mello","Christine Sorrento"]},
+   staff:["Christina Desmond","Mary Mello","Christine Sorrento","Stacie Joyce"]},
   {id:"NOR", name:"Norwood",  color:"#6d28d9",
    staff:["Dona Menutole","Nancy Spaulding","Karen Calabro","Kelley Secord"]},
   {id:"PLY", name:"Plymouth", color:"#0f766e",
@@ -196,29 +183,39 @@ const SITES = [
 ];
 
 const KENMORE_PTO = {
-  k1: ["d0720","d0730","d0803","d0810","d0817","d0827"],
-  k2: ["d0807","d0820","d0821","d0824"],
-  k3: [],
+  k1: ["d0720","d0730","d0803","d0810","d0817","d0827"], // Stacey Hurley
+  k2: ["d0807","d0820","d0821","d0824"],                 // Anthony Gattonini
+  k3: [],                                                 // Stacie Joyce
 };
 
+// Actual PTO requests from CT TIME OFF REQUESTS.xlsx
 const REGULAR_OFF = {
   WEY: {
-    "Mary Mello":         ["d0821"],
+    "Mary Mello":         ["d0821","d0827"],
     "Christina Desmond":  ["d0825"],
     "Christine Sorrento": ["d0812"],
   },
   NOR: {
-    "Nancy Spaulding":  ["d0720","d0721","d0722","d0805","d0819"],
-    "Dona Menutole":    ["d0729","d0812","d0826"],
-    "Karen Calabro":    ["d0722","d0805","d0819"],
-    "Kelley Secord":    ["d0729","d0805","d0812","d0826"],
+    "Nancy Spaulding": ["d0720","d0721","d0722"],
+    "Kelley Secord":   ["d0805","d0806","d0807","d0813","d0814"],
   },
   PLY: {
     "Kevin Suslavicius":  ["d0730","d0731","d0803","d0804","d0805"],
-    "Christine Sorrento": ["d0806","d0810","d0811","d0812","d0813","d0814","d0817"],
+    "Christine Sorrento": ["d0806","d0810","d0811","d0812","d0813","d0817"],
   },
 };
 
+// Schedule rotation days — not PTO, just not their day (no chip shown)
+const SCHED_OFF = {
+  NOR: {
+    "Nancy Spaulding": ["d0805","d0819"],
+    "Dona Menutole":   ["d0729","d0812","d0826"],
+    "Karen Calabro":   ["d0722","d0805","d0819"],
+    "Kelley Secord":   ["d0729","d0812","d0826"],
+  },
+};
+
+// Day-of-week restrictions (getDay: 0=Sun,1=Mon,2=Tue,3=Wed,4=Thu,5=Fri,6=Sat)
 const STAFF_DAY_RESTRICTIONS = {
   NOR: {
     "Dona Menutole":  [1,2,3],
@@ -226,7 +223,7 @@ const STAFF_DAY_RESTRICTIONS = {
     "Karen Calabro":  [3,4,5],
     "Kelley Secord":  [3,4,5],
   },
-  WEY: { "Christine Sorrento":[3], "Mary Mello":[1,2,4,5], "Christina Desmond":[2,3,4,5] },
+  WEY: { "Christine Sorrento":[3], "Mary Mello":[1,2,4,5], "Christina Desmond":[2,3,4,5], "Stacie Joyce":[1] },
   PLY: { "Christine Sorrento":[1,2,4] },
 };
 
@@ -236,11 +233,16 @@ const KENMORE = [
   {id:"k3", name:"Stacie Joyce"},
 ];
 
+// Days when a Kenmore tech is regular staff elsewhere (not available for redeployment)
+const KENMORE_REGULAR_DAYS = {
+  k3: { dows:[1], site:"WEY" }, // Stacie Joyce — regular Weymouth Mon
+};
+
 const ALL_TECHS = [
   "Anthony Gattonini","Christina Desmond","Christine Sorrento",
   "Dona Menutole","Karen Calabro","Kelley Secord",
   "Kevin Suslavicius","Mary Mello","Nancy Spaulding",
-  "Stacey Hurley","Stacie Joyce",
+  "Raghda Tabbara","Stacey Hurley","Stacie Joyce",
 ];
 
 // ── State ──
@@ -248,7 +250,9 @@ const ALL_TECHS = [
 let signups = {};
 KENMORE.forEach(t => { signups[t.id] = {}; });
 let weekendSignups = {};
-let built = false;
+// staffOverrides[siteId][staffName][dayKey] = techName | "OFF" | "" (empty = default)
+let staffOverrides = {};
+SITES.forEach(s => { staffOverrides[s.id] = {}; s.staff.forEach(n => { staffOverrides[s.id][n] = {}; }); });
 
 // ── Helpers ──
 
@@ -257,12 +261,21 @@ function dayOfWeek(dayKey) {
   return new Date(2026, parseInt(mm)-1, parseInt(dd)).getDay();
 }
 
-function isWorking(siteId, staffName, dayKey) {
-  const off = (REGULAR_OFF[siteId] && REGULAR_OFF[siteId][staffName]) || [];
-  if(off.includes(dayKey)) return false;
+// Returns: "working" | "pto" | "sched-off" | "restricted"
+function staffStatus(siteId, staffName, dayKey) {
+  const dow = dayOfWeek(dayKey);
   const restrict = STAFF_DAY_RESTRICTIONS[siteId] && STAFF_DAY_RESTRICTIONS[siteId][staffName];
-  if(restrict && !restrict.includes(dayOfWeek(dayKey))) return false;
-  return true;
+  if(restrict && !restrict.includes(dow)) return "restricted";
+  const schedOff = SCHED_OFF[siteId] && SCHED_OFF[siteId][staffName] || [];
+  if(schedOff.includes(dayKey)) return "sched-off";
+  const pto = REGULAR_OFF[siteId] && REGULAR_OFF[siteId][staffName] || [];
+  if(pto.includes(dayKey)) return "pto";
+  return "working";
+}
+
+function effectiveName(siteId, staffName, dayKey) {
+  const ov = staffOverrides[siteId] && staffOverrides[siteId][staffName] && staffOverrides[siteId][staffName][dayKey];
+  return ov !== undefined ? ov : null; // null = use default
 }
 
 function techOpts(selected) {
@@ -270,19 +283,23 @@ function techOpts(selected) {
     ALL_TECHS.map(n => `<option value="${n}"${n===selected?" selected":""}>${n}</option>`).join("");
 }
 
+function staffOpts(defaultName, selectedVal) {
+  const offOpt = `<option value="OFF"${selectedVal==="OFF"?" selected":""}>Off / Sick</option>`;
+  return ALL_TECHS.map(n =>
+    `<option value="${n}"${n===selectedVal?" selected":""}>${n}</option>`
+  ).join("") + offOpt;
+}
+
 function applyDefaults() {
   KENMORE.forEach(t => {
     (KENMORE_PTO[t.id]||[]).forEach(dk => { if(!signups[t.id][dk]) signups[t.id][dk] = "PTO"; });
-  });
-  ["d0720","d0727","d0803","d0810","d0817","d0824"].forEach(dk => {
-    if(!signups["k3"][dk]) signups["k3"][dk] = "WEY";
   });
 }
 
 // ── Firebase ──
 
 function saveToFirebase() {
-  scheduleRef.set({signups, weekendSignups});
+  scheduleRef.set({signups, weekendSignups, staffOverrides});
 }
 
 // ── Build DOM ──
@@ -302,7 +319,7 @@ function buildAll() {
       col.innerHTML = `<div class="day-hdr ${d.weekend?"wkend":"wkday"}">
         <div class="day-name">${d.day}</div><div class="day-date">${d.date}</div></div>`;
       if(d.weekend) {
-        const ws = (weekendSignups[d.key] || {});
+        const ws = weekendSignups[d.key] || {};
         SITES.forEach(site => {
           const sl = ws[site.id] || {t1:"",t2:"",aid:""};
           const block = document.createElement("div");
@@ -312,16 +329,13 @@ function buildAll() {
             <div class="wknd-slots">
               <div class="slot-lbl">Tech 1</div>
               <select class="wknd-sel${sl.t1?" ws-filled":""}" id="ws_${site.id}_${d.key}_t1"
-                onchange="updateWeekend('${site.id}','${d.key}','t1',this)">
-                ${techOpts(sl.t1)}</select>
+                onchange="updateWeekend('${site.id}','${d.key}','t1',this)">${techOpts(sl.t1)}</select>
               <div class="slot-lbl">Tech 2</div>
               <select class="wknd-sel${sl.t2?" ws-filled":""}" id="ws_${site.id}_${d.key}_t2"
-                onchange="updateWeekend('${site.id}','${d.key}','t2',this)">
-                ${techOpts(sl.t2)}</select>
+                onchange="updateWeekend('${site.id}','${d.key}','t2',this)">${techOpts(sl.t2)}</select>
               <div class="slot-lbl">Tech Aid</div>
               <input type="text" class="wknd-aid${sl.aid?" aid-filled":""}"
-                id="ws_${site.id}_${d.key}_aid" placeholder="Tech Aid name"
-                value="${sl.aid||""}"
+                id="ws_${site.id}_${d.key}_aid" placeholder="Tech Aid name" value="${sl.aid||""}"
                 onchange="updateWeekendAid('${site.id}','${d.key}',this)">
             </div>
             <div class="site-total" id="tot_${site.id}_${d.key}">—</div>`;
@@ -331,15 +345,33 @@ function buildAll() {
         SITES.forEach(site => {
           const block = document.createElement("div");
           block.className = `site-block sb-${site.id}`;
+          // Build staff dropdowns
+          let staffHtml = "";
+          site.staff.forEach(n => {
+            const status = staffStatus(site.id, n, d.key);
+            if(status === "restricted" || status === "sched-off") return; // not their day, hide
+            const ov = effectiveName(site.id, n, d.key);
+            const curVal = ov !== null ? ov : (status === "pto" ? "OFF" : n);
+            const selCls = status === "pto" && ov === null ? "s-pto"
+              : curVal === "OFF" ? "s-off"
+              : ov !== null && ov !== n ? "s-override"
+              : "";
+            const safeId = n.replace(/\s+/g,"_");
+            staffHtml += `<div class="staff-row">
+              <select class="staff-sel ${selCls}" id="ss_${site.id}_${safeId}_${d.key}"
+                onchange="overrideStaff('${site.id}','${n}','${d.key}',this)">
+                ${staffOpts(n, curVal)}
+              </select></div>`;
+          });
           block.innerHTML = `
             <div class="sb-title">${site.name}</div>
-            <div id="chips_${site.id}_${d.key}"></div>
+            ${staffHtml}
             <div class="kenmore-slot">
               <div class="k-lbl">Kenmore Tech</div>
               <select class="k-sel" id="ksel_${site.id}_${d.key}"
                 onchange="assignKenmore('${site.id}','${d.key}',this)">
-                <option value="">— Sign up —</option>
-                ${KENMORE.map(t=>`<option value="${t.id}">${t.name}</option>`).join("")}
+                <option value="">— None —</option>
+                ${KENMORE.filter(t=>{ const r=KENMORE_REGULAR_DAYS[t.id]; return !(r&&r.dows.includes(dayOfWeek(d.key))); }).map(t=>`<option value="${t.id}">${t.name}</option>`).join("")}
               </select>
             </div>
             <div class="site-total" id="tot_${site.id}_${d.key}">—</div>`;
@@ -356,6 +388,28 @@ function buildAll() {
 
 // ── Weekday logic ──
 
+function overrideStaff(siteId, staffName, dayKey, sel) {
+  const val = sel.value;
+  if(!staffOverrides[siteId]) staffOverrides[siteId] = {};
+  if(!staffOverrides[siteId][staffName]) staffOverrides[siteId][staffName] = {};
+  const status = staffStatus(siteId, staffName, dayKey);
+  const defaultVal = status === "pto" ? "OFF" : staffName;
+  if(val === defaultVal) {
+    delete staffOverrides[siteId][staffName][dayKey];
+  } else {
+    staffOverrides[siteId][staffName][dayKey] = val;
+  }
+  const ov = effectiveName(siteId, staffName, dayKey);
+  const curVal = ov !== null ? ov : defaultVal;
+  sel.className = "staff-sel " + (
+    status === "pto" && ov === null ? "s-pto" :
+    curVal === "OFF" ? "s-off" :
+    ov !== null && ov !== staffName ? "s-override" : ""
+  );
+  refreshDay(dayKey);
+  saveToFirebase();
+}
+
 function assignKenmore(siteId, dayKey, sel) {
   const techId = sel.value;
   KENMORE.forEach(t => { if(signups[t.id][dayKey] === siteId) signups[t.id][dayKey] = ""; });
@@ -365,30 +419,27 @@ function assignKenmore(siteId, dayKey, sel) {
   saveToFirebase();
 }
 
-function refreshDay(dayKey) {
-  const regCount = {};
-  SITES.forEach(s => { regCount[s.id] = 0; });
-  SITES.forEach(site => {
-    site.staff.forEach(n => { if(isWorking(site.id, n, dayKey)) regCount[site.id]++; });
+function countRegularPresent(siteId, dayKey) {
+  let count = 0;
+  SITES.find(s=>s.id===siteId).staff.forEach(n => {
+    const status = staffStatus(siteId, n, dayKey);
+    if(status === "restricted" || status === "sched-off") return;
+    const ov = effectiveName(siteId, n, dayKey);
+    const effective = ov !== null ? ov : (status === "pto" ? "OFF" : n);
+    if(effective && effective !== "OFF") count++;
   });
+  return count;
+}
+
+function refreshDay(dayKey) {
   const kAtSite = {};
   KENMORE.forEach(t => {
     const v = signups[t.id][dayKey];
     if(v && v !== "PTO") kAtSite[v] = t;
   });
+
   SITES.forEach(site => {
-    const chipsEl = document.getElementById(`chips_${site.id}_${dayKey}`);
-    if(chipsEl) {
-      chipsEl.innerHTML = site.staff.map(n => {
-        const restrict = STAFF_DAY_RESTRICTIONS[site.id] && STAFF_DAY_RESTRICTIONS[site.id][n];
-        if(restrict && !restrict.includes(dayOfWeek(dayKey))) return "";
-        const off = (REGULAR_OFF[site.id] && REGULAR_OFF[site.id][n]) || [];
-        const isPTO = off.includes(dayKey);
-        const parts = n.split(" ");
-        const label = parts[0] + " " + (parts[1]?parts[1][0]+".":"");
-        return `<span class="staff-chip ${isPTO?"chip-pto":"chip-wkg"}">${label}${isPTO?" — PTO":""}</span>`;
-      }).join("");
-    }
+    // Update Kenmore dropdown
     const kSel = document.getElementById(`ksel_${site.id}_${dayKey}`);
     if(kSel) {
       const assigned = kAtSite[site.id];
@@ -399,15 +450,21 @@ function refreshDay(dayKey) {
         if(!opt) return;
         const isPTO = signups[t.id][dayKey] === "PTO";
         const elsewhere = signups[t.id][dayKey] && signups[t.id][dayKey] !== "PTO" && signups[t.id][dayKey] !== site.id;
-        opt.disabled = isPTO || elsewhere;
+        const reg = KENMORE_REGULAR_DAYS[t.id];
+        const isRegular = reg && reg.dows.includes(dayOfWeek(dayKey));
+        opt.disabled = isPTO || elsewhere || isRegular;
         opt.textContent = isPTO ? `${t.name} — PTO`
+          : isRegular ? `${t.name} — Regular ${reg.site}`
           : elsewhere ? `${t.name} → ${signups[t.id][dayKey]}`
           : t.name;
       });
     }
+
+    // Total
     const totEl = document.getElementById(`tot_${site.id}_${dayKey}`);
     if(totEl) {
-      const total = regCount[site.id] + (kAtSite[site.id] ? 1 : 0);
+      const reg = countRegularPresent(site.id, dayKey);
+      const total = reg + (kAtSite[site.id] ? 1 : 0);
       const cls = total >= 3 ? "tot-good" : total === 1 ? "tot-crit" : "tot-warn";
       const lbl = total >= 3 ? `${total} techs ✓` : total === 1 ? `${total} tech !!` : `${total} techs ⚠`;
       totEl.className = `site-total ${cls}`;
@@ -443,11 +500,11 @@ function refreshWeekendDay(dayKey) {
     const sl = (weekendSignups[dayKey] && weekendSignups[dayKey][site.id]) || {t1:"",t2:"",aid:""};
     const totEl = document.getElementById(`tot_${site.id}_${dayKey}`);
     if(!totEl) return;
-    const techs = [sl.t1, sl.t2].filter(v=>v).length;
+    const techs = [sl.t1,sl.t2].filter(v=>v).length;
     const hasAid = sl.aid ? 1 : 0;
     const full = techs >= 2 && hasAid;
     totEl.className = `site-total ${full?"tot-good":techs>=1||hasAid?"tot-warn":"tot-crit"}`;
-    totEl.textContent = full ? "2 techs + Aid ✓" : `${techs}/2 techs${hasAid?" + Aid":"⚠"}`;
+    totEl.textContent = full ? "2 techs + Aid ✓" : `${techs}/2 techs${hasAid?" + Aid":" ⚠"}`;
   });
 }
 
@@ -458,35 +515,41 @@ function refreshAllDays() {
   }));
 }
 
-// ── Clear ──
+// ── Persistence ──
 
 function clearAll() {
-  if(!confirm("Clear all sign-ups for everyone?")) return;
+  if(!confirm("Clear all sign-ups and overrides for everyone?")) return;
   KENMORE.forEach(t => { signups[t.id] = {}; });
   weekendSignups = {};
+  SITES.forEach(s => { s.staff.forEach(n => { staffOverrides[s.id][n] = {}; }); });
   applyDefaults();
   saveToFirebase();
 }
-
-// ── Init with Firebase listener ──
 
 function init() {
   buildAll();
   scheduleRef.on("value", snapshot => {
     const data = snapshot.val();
     if(data) {
-      if(data.signups) {
-        KENMORE.forEach(t => { if(data.signups[t.id]) signups[t.id] = data.signups[t.id]; });
-      }
+      if(data.signups) KENMORE.forEach(t => { if(data.signups[t.id]) signups[t.id] = data.signups[t.id]; });
       weekendSignups = data.weekendSignups || {};
+      if(data.staffOverrides) {
+        SITES.forEach(s => {
+          if(data.staffOverrides[s.id]) {
+            s.staff.forEach(n => {
+              if(data.staffOverrides[s.id][n]) staffOverrides[s.id][n] = data.staffOverrides[s.id][n];
+            });
+          }
+        });
+      }
     } else {
       applyDefaults();
       saveToFirebase();
     }
     refreshAllDays();
-    const status = document.getElementById("liveStatus");
-    status.className = "live-dot connected";
-    status.innerHTML = `<span class="dot"></span>Live`;
+    const st = document.getElementById("liveStatus");
+    st.className = "live-dot connected";
+    st.innerHTML = `<span class="dot"></span>Live`;
   });
 }
 
