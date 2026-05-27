@@ -309,7 +309,7 @@ function techOpts(selected) {
 }
 
 function staffOpts(defaultName, selectedVal) {
-  const offOpt = `<option value="OFF"${selectedVal==="OFF"?" selected":""}>Off / Sick</option>`;
+  const offOpt = `<option value="OFF"${selectedVal==="OFF"?" selected":""}>Off / PTO</option>`;
   return ALL_TECHS.map(n =>
     `<option value="${n}"${n===selectedVal?" selected":""}>${n}</option>`
   ).join("") + offOpt;
@@ -379,7 +379,7 @@ function buildAll() {
             const ov = effectiveName(site.id, n, d.key);
             const curVal = ov !== null ? ov : (status === "pto" ? "OFF" : n);
             const selCls = status === "pto" && ov === null ? "s-pto"
-              : curVal === "OFF" ? "s-off"
+              : curVal === "OFF" ? "s-pto"
               : ov !== null && ov !== n ? "s-override"
               : "";
             const safeId = n.replace(/\s+/g,"_");
