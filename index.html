@@ -95,6 +95,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#eef2f7;color:#1e293
     <p>Atrius Imaging · July 20 – August 28, 2026</p>
   </div>
   <div class="hdr-right">
+    <button class="btn btn-undo" id="undoBtn" onclick="undo()" disabled style="font-size:12px;padding:5px 14px">↩ Undo</button>
     <span class="live-dot connecting" id="liveStatus"><span class="dot"></span>Connecting…</span>
     <span class="hdr-badge">6 Weeks · Mon–Sun</span>
   </div>
@@ -111,7 +112,6 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#eef2f7;color:#1e293
 <div id="scheduleWrap"></div>
 
 <div class="actions">
-  <button class="btn btn-undo" id="undoBtn" onclick="undo()" disabled>↩ Undo</button>
   <button class="btn btn-print" onclick="window.print()">Print / Save PDF</button>
   <button class="btn btn-clear" onclick="clearAll()">Clear All</button>
 </div>
