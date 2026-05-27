@@ -67,6 +67,11 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#eef2f7;color:#1e293
 .wknd-aid:focus{outline:none;border-color:#f59e0b;border-style:solid}
 .wknd-aid.aid-filled{border-color:#f59e0b;border-style:solid;background:#fef3c7;color:#92400e;font-weight:600}
 
+.who-off{background:#fff0f0;border:1.5px solid #fca5a5;border-radius:7px;padding:5px 6px;min-height:28px}
+.who-off-lbl{font-size:9px;font-weight:800;color:#dc2626;text-transform:uppercase;letter-spacing:.4px;margin-bottom:3px}
+.who-off-names{display:flex;flex-wrap:wrap;gap:3px}
+.off-chip{background:#fee2e2;color:#dc2626;border-radius:4px;padding:2px 5px;font-size:9.5px;font-weight:600;font-style:italic}
+.who-off-none{font-size:9.5px;color:#94a3b8;font-style:italic}
 .site-total{margin-top:5px;text-align:center;font-size:11px;font-weight:800;padding:4px 2px;border-radius:5px}
 .tot-good{background:#dcfce7;color:#15803d}
 .tot-warn{background:#fed7aa;color:#c2410c}
@@ -343,7 +348,8 @@ function buildAll() {
       const col = document.createElement("div");
       col.className = "day-col";
       col.innerHTML = `<div class="day-hdr ${d.weekend?"wkend":"wkday"}">
-        <div class="day-name">${d.day}</div><div class="day-date">${d.date}</div></div>`;
+        <div class="day-name">${d.day}</div><div class="day-date">${d.date}</div></div>
+        ${!d.weekend ? `<div class="who-off"><div class="who-off-lbl">Off</div><div class="who-off-names" id="whooff_${d.key}"><span class="who-off-none">All in</span></div></div>` : ""}`;
       if(d.weekend) {
         const ws = weekendSignups[d.key] || {};
         SITES.forEach(site => {
@@ -433,6 +439,7 @@ function overrideStaff(siteId, staffName, dayKey, sel) {
     ov !== null && ov !== staffName ? "s-override" : ""
   );
   refreshDay(dayKey);
+  refreshWhoOff(dayKey);
   saveToFirebase();
 }
 
@@ -442,6 +449,7 @@ function assignKenmore(siteId, dayKey, sel) {
   if(techId && signups[techId][dayKey] !== "PTO") signups[techId][dayKey] = "";
   if(techId) signups[techId][dayKey] = siteId;
   refreshDay(dayKey);
+  refreshWhoOff(dayKey);
   saveToFirebase();
 }
 
@@ -499,6 +507,34 @@ function refreshDay(dayKey) {
   });
 }
 
+// ── Who's Off ──
+
+function getOffNames(dayKey) {
+  const off = [];
+  SITES.forEach(site => {
+    site.staff.forEach(n => {
+      const status = staffStatus(site.id, n, dayKey);
+      if(status === "restricted" || status === "sched-off") return;
+      const ov = effectiveName(site.id, n, dayKey);
+      const effective = ov !== null ? ov : (status === "pto" ? "OFF" : n);
+      if(effective === "OFF" && !off.includes(n)) off.push(n);
+    });
+  });
+  KENMORE.forEach(t => {
+    if(signups[t.id][dayKey] === "PTO" && !off.includes(t.name)) off.push(t.name);
+  });
+  return off;
+}
+
+function refreshWhoOff(dayKey) {
+  const el = document.getElementById(`whooff_${dayKey}`);
+  if(!el) return;
+  const names = getOffNames(dayKey);
+  el.innerHTML = names.length
+    ? names.map(n => `<span class="off-chip">${n.split(" ")[0]}</span>`).join("")
+    : `<span class="who-off-none">All in</span>`;
+}
+
 // ── Weekend logic ──
 
 function updateWeekend(siteId, dayKey, slot, sel) {
@@ -537,7 +573,7 @@ function refreshWeekendDay(dayKey) {
 function refreshAllDays() {
   WEEKS.forEach(w => w.days.forEach(d => {
     if(d.weekend) refreshWeekendDay(d.key);
-    else refreshDay(d.key);
+    else { refreshDay(d.key); refreshWhoOff(d.key); }
   }));
 }
 
