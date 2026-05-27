@@ -76,6 +76,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#eef2f7;color:#1e293
 .btn{border:none;border-radius:6px;padding:9px 20px;font-size:13px;font-weight:600;cursor:pointer}
 .btn-print{background:#0f766e;color:#fff}.btn-print:hover{background:#0d5e57}
 .btn-clear{background:#fff;color:#dc2626;border:1.5px solid #fca5a5}.btn-clear:hover{background:#fef2f2}
+.btn-undo{background:#fff;color:#1d4ed8;border:1.5px solid #93c5fd}.btn-undo:hover{background:#eff6ff}.btn-undo:disabled{opacity:.35;cursor:not-allowed}
 
 @media print{
   body{background:#fff}
@@ -110,6 +111,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#eef2f7;color:#1e293
 <div id="scheduleWrap"></div>
 
 <div class="actions">
+  <button class="btn btn-undo" id="undoBtn" onclick="undo()" disabled>↩ Undo</button>
   <button class="btn btn-print" onclick="window.print()">Print / Save PDF</button>
   <button class="btn btn-clear" onclick="clearAll()">Clear All</button>
 </div>
@@ -252,6 +254,31 @@ let weekendSignups = {};
 let staffOverrides = {};
 SITES.forEach(s => { staffOverrides[s.id] = {}; s.staff.forEach(n => { staffOverrides[s.id][n] = {}; }); });
 
+// ── History (undo) ──
+const MAX_HISTORY = 20;
+let history = [];
+
+function snapshot() {
+  return JSON.stringify({signups, weekendSignups, staffOverrides});
+}
+
+function pushHistory() {
+  history.push(snapshot());
+  if(history.length > MAX_HISTORY) history.shift();
+  document.getElementById("undoBtn").disabled = false;
+}
+
+function undo() {
+  if(!history.length) return;
+  const prev = JSON.parse(history.pop());
+  signups = prev.signups;
+  weekendSignups = prev.weekendSignups;
+  staffOverrides = prev.staffOverrides;
+  buildAll();
+  saveToFirebase(true);
+  document.getElementById("undoBtn").disabled = history.length === 0;
+}
+
 // ── Helpers ──
 
 function dayOfWeek(dayKey) {
@@ -296,7 +323,8 @@ function applyDefaults() {
 
 // ── Firebase ──
 
-function saveToFirebase() {
+function saveToFirebase(skipHistory) {
+  if(!skipHistory) pushHistory();
   scheduleRef.set({signups, weekendSignups, staffOverrides});
 }
 
@@ -521,7 +549,7 @@ function clearAll() {
   weekendSignups = {};
   SITES.forEach(s => { s.staff.forEach(n => { staffOverrides[s.id][n] = {}; }); });
   applyDefaults();
-  saveToFirebase();
+  saveToFirebase(true);
 }
 
 function init() {
